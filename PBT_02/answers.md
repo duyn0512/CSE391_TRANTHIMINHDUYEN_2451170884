@@ -231,38 +231,45 @@ Dự đoán kết quả khi bấm Submit:
 
 ### Câu C1 - Debug Form
 
-Lỗi 1: Dòng 2 - Input "Tên" không có `<label for="...">` vi phạm accessibility.
-    **Sửa:** 
+1. Lỗi 1: 
+    - Dòng 2 - Input "Tên" không có `<label for="...">` vi phạm accessibility.
+    - **Sửa:** 
         ```html
             <label for="fullname">Tên:</lable>
             <input type="text" id="fullname" name="fullname" required>
         ```
-Lỗi 2: Dòng 4 - Input "Email" thiếu thuộc tính `name` để gửi dữ liệu và thiếu `<lable>`.
-    **Sửa:**
+2. Lỗi 2: 
+    - Dòng 4 - Input "Email" thiếu thuộc tính `name` để gửi dữ liệu và thiếu `<lable>`.
+    - **Sửa:**
         ```html
             <label for="email">Email</label>
             <input type="email" id="eamil" name="email" requirred>
         ```
-Lỗi 3: Dòng 6  - Input "Mật khẩu" thiếu `<label>` và định dang `id`.
-    **Sửa:**
+3. Lỗi 3: 
+    - Dòng 6  - Input "Mật khẩu" thiếu `<label>` và định dang `id`.
+    - **Sửa:**
         ```html
             <label for="pwd">Mật khẩu</label>
             <input type="passwork" id="pwd" name="pwd" required>
         ```
-Lỗi 4: Dòng 7 - Ô "Nhập lại mật khẩu" thiếu `<label>` và định danh `id`.
-    **Sửa:**
+4. Lỗi 4: 
+    - Dòng 7 - Ô "Nhập lại mật khẩu" thiếu `<label>` và định danh `id`.
+    - **Sửa:**
         ```html
             <label for="re-pwd">Nhập lại:</label>
             <input type="passwork" id="re-pwd" name="re-pwd" required>
         ```
-Lỗi 5: Dòng 9 - Dùng `type="text"` cho điện thoại là sai, thiếu `<label>` và thuộc tính `name`.
-    **Sửa:**
+5. Lỗi 5: 
+    - Dòng 9 - Dùng `type="text"` cho điện thoại là sai, thiếu `<label>` và thuộc tính `name`.
+    - **Sửa:**
         ```html
             <label for="tel">Số điện thoại:</label>
             <input type="tel" id="tel" name="tel">
         ```
-Lỗi 6,7: Dòng 11 - Thẻ `<select>` thiếu `<label>, id, name`. Dòng 12 - Các thẻ `<option>` thiếu thuộc tính `value` để server xử lý
-    **Sửa:**
+6. Lỗi 6,7: 
+    - Dòng 11 - Thẻ `<select>` thiếu `<label>, id, name`. 
+    - Dòng 12 - Các thẻ `<option>` thiếu thuộc tính `value` để server xử lý
+    - **Sửa:**
         ```html
             <label for="city">Thành phố:<label>
             <select id="city" name="city">
@@ -270,8 +277,9 @@ Lỗi 6,7: Dòng 11 - Thẻ `<select>` thiếu `<label>, id, name`. Dòng 12 - C
                 <option value="hcm">TP.HCM</option>
             </select>
         ```
-Lỗi 8: Dòng 15 - Thẻ `<label>` đứng độc lập, thiếu thẻ `<input type="checkbox">` tương ứng.
-    **Sửa:**
+7. Lỗi 8: 
+    - Dòng 15 - Thẻ `<label>` đứng độc lập, thiếu thẻ `<input type="checkbox">` tương ứng.
+    - **Sửa:**
         ```html
             <input type="checkbox" id="check" name="check">
             <label for="check">Tôi đồng ý điều khoản</label>
@@ -285,7 +293,7 @@ Lỗi 8: Dòng 15 - Thẻ `<label>` đứng độc lập, thiếu thẻ `<input 
     - CMND/CCCD: `pattern="[0-9]{12}"`
     - Số tài khoản: `pattern="[0-9]{10,15}"`
 
-2. HTML5 Validation không có đủ an toàn cho ngân hàng. Vì dễ bị vô hiệu hoá
+2. HTML5 Validation không có đủ an toàn cho ngân hàng vì dễ bị vô hiệu hoá.
 
 3. Ba loại Validation HTML5 KHÔNG THỂ làm được(Phải dùng JavaScript)
 
@@ -296,4 +304,4 @@ Lỗi 8: Dòng 15 - Thẻ `<label>` đứng độc lập, thiếu thẻ `<input 
 4. Hai rủi ro bảo mật nếu chỉ validtion trên Froontend mà không validation Backend:
 
     - Tấn công SQL Injection/XSS
-    -Sai lệch dữ liệu hệ thống
+    - Sai lệch dữ liệu hệ thống
