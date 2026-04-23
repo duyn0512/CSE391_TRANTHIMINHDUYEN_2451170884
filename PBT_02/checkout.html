@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete order form</title>
+<body>
+
+    <h1 align="center">HÓA ĐƠN THANH TOÁN</h1>
+
+    <h2>Phần 1: Giỏ hàng</h2>
+
+    <table align="center" border="1" cellpadding="10" width="800">
+
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Sản phẩm</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr align="center">
+                <td>1</td>
+                <td align="left">Sổ còng B5</td>
+                <td>45.000 VNĐ</td>
+                <td>2</td>
+                <td>90.000 VNĐ</td>
+            </tr>
+
+            <tr align="center">
+                <td>2</td>
+                <td align="left">Bút mực deli</td>
+                <td>12.000 VNĐ</td>
+                <td>5</td>
+                <td>60.000 VNĐ</td>
+            </tr>
+
+            <tr align="center">
+                <td>3</td>
+                <td align="left">Hộp đựng bút</td>
+                <td>10.000 VNĐ</td>
+                <td>1</td>
+                <td>10.000 VNĐ</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr align="center">
+                <td colspan="4"><strong>Tổng tiền</strong></td>
+                <td ><output>160.000 VNĐ</output></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <br>
+
+    <form action="#">
+
+        <p>
+            <label for="search">Tìm kiếm sản phẩm:</label>
+            <input list="product" id="search" name="search">
+            <datalist id="product">
+                <option value="Sổ còng B5">
+                <option value="Bút mực deli">
+                <option value="Hộp đựng bút">
+                <option value="Vở ô ly Thịnh long">
+            </datalist>
+        </p>
+            
+        <p>
+            Điểm tích luỹ:
+            <meter value="0.6" min="0" max="1">60%</meter>
+        </p>
+
+        <fieldset>
+
+            <legend><h2>Phần 2: Thanh toán</h2></legend>
+
+            <p>Phương thức thanh toán</p>
+
+            <input type="radio" id="cod" name="payment" value="COD" checked>
+            <label for="cod">COD</label><br>
+
+            <input type="radio" id="ck" name="payment" value="Chuyển khoản">
+            <label for="ck">Chuyển khoản</label><br>
+
+            <input type="radio" id="vi" name="payment" value="Ví điện tử">
+            <label for="vi">Ví điện tử</label><br>
+
+            <p>
+                <label for="voucher">Mă giảm giá</label>
+                <input type="text" id="voucher" name="voucher"
+                        pattern="SALE[0-9]{4}"
+                        placeholder="VD: SALE2026"
+                        title="Mă phải bắt đầu bằng SALE và 4 chữ số đi kèm"
+            </p>
+
+            <p>
+                <label for="note">Ghi chú:</label><br>
+                <textarea id="note" name="note" rows="4" cols="50"></textarea>
+            </p>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend><h2>Phần 3: Giao hàng</h2></legend>
+
+            <p>
+                <label for="d-date">Ngày gia hàng mong muốn</label>\
+                <input type="date" id="d-date" name="d-date" min="2026-04-24" required>
+            </p>
+
+            <p>
+                <lable for="time-slot">Khung giờ:</lable>
+                <select id="time-slot" name="time-slot">
+                    <option value="8-12">Sáng: 8-12h</option>
+                    <option value="14-18">Chiều: 14-18h</option>
+                    <option value="18-21">Tối: 18-21h</option>
+                </select>
+            </p>
+
+            <p>
+                <lable for="d-range">Thời gian giao hàng:</lable><br>
+                1<input type="range" id="d-range" name="d-range" min="1" max="7" step="1" value="3"> 7
+            </p>
+        </fieldset>
+
+        <br>
+        
+        <div align="center">
+            <input type="submit" value="XÁC NHẬN ĐẶT HÀNG" aria-label="Xác nhận đặt hàng">
+        </div>
+    </form>
+</body>
+</html>
