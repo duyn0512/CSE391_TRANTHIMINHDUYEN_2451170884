@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+#app header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Tạo đường vát chéo chân header */
+    margin-bottom: 40px;
+}
+
+header.top-bar.dark h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #38bdf8;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+nav a:hover, a[href="#about"].active {
+    color: white;
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 5px;
+}
+
+section {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h2::before { 
+    width: 5px;
+    height: 25px;
+    background: #38bdf8;
+    border-radius: 2px;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+}
+
+.profile-frame {
+    position: relative;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.status-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.mission-statement {
+    font-size: 1.1rem;
+    color: #475569;
+    font-style: italic;
+    margin: 15px 0;
+    padding-left: 15px;
+    border-left: 3px solid #e2e8f0;
+}
+
+.skill-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.skill-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+th { background: #f8fafc; color: #64748b; padding: 15px; text-align: left; font-size: 0.8rem; }
+td { padding: 15px; border-top: 1px solid #f1f5f9; }
+tr:hover { background: #f8fafc; }
+
+.price {
+    background: #dcfce7;
+    color: #166534;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+footer {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#contact a {
+    color: #38bdf8;
+    margin: 0 10px;
+    text-decoration: none;
+}
