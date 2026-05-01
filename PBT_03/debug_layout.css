@@ -1,0 +1,45 @@
+* {
+    box-sizing: content-box; 
+}
+
+.container {
+    width: 960px;
+    margin: 50px auto;
+    border: 1px solid red;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #f0f0f0;
+}
+
+.content {
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    background: #e0e0e0;
+}
+/* Cách 1 */
+.border-box-fix .sidebar,
+.border-box-fix .content {
+    box-sizing: border-box;
+}
+
+.border-box-fix .content {
+    width: 660px;
+}
+
+/* Cách 2 */
+.manual-fix .sidebar {
+    box-sizing: content-box;
+    width: 300px;
+}
+
+.manual-fix .content {
+    box-sizing: content-box;
+    width: 556px;
+}

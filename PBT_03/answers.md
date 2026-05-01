@@ -36,18 +36,19 @@
 3. External CSS - file riêng:
 
     - Ví dụ:
-        File `style.css`:
+
+        - File `style.css`:
 
             ```css
-                h1 { color: darkgreen; }
-                .container { width: 80%; margin: auto; }
+            h1 { color: darkgreen; }
+            .container { width: 80%; margin: auto; }
             ```
-        File `index.html`:
+        - File `index.html`:
 
             ```html
-                <head>
-                    <link rel="stylesheet" type="text/css" href="style.css">
-                </head>
+            <head>
+                <link rel="stylesheet" type="text/css" href="style.css">
+            </head>
             ```
     - Ưu điểm: 
         - Tách biệt hoàn toàn nội dung (HTML) và giao diện (CSS)
@@ -132,13 +133,16 @@
     | **Rule C** | `#main-price` | 1 | 0 | 0 | (1, 0, 0) |
     | **Rule D** | `p.price` | 0 | 1 | 1 | (0, 1, 1) |
 
-2. Element có màu đỏ
-     Vì:  ID - Rule C có quyền năng cao nhất trong 4 selector này, nên rule C thắng tuyệt đối kể cả các selector khác có dài hơn hay không.
+2. Element có màu đỏ. 
+
+    Vì:  ID - Rule C có quyền năng cao nhất trong 4 selector này, nên rule C thắng tuyệt đối kể cả các selector khác có dài hơn hay không.
 
 3. Nếu thêm `<p class="price" id="main-price" style="color: orange;">`, element có màu cam.
+
     Vì: Inline `style` có độ ưu tiên cao hơn tất cả các selector nằm trong External CSS(file riêng) hoặc Internal CSS(thẻ `<style>`)   
 
 4. Nếu Rule A thêm `!important`, element có màu đen
+
     Vì: Từ khóa `!important` là một "vũ khí đặc biệt". Nó không nằm trong thang điểm Specificity thông thường mà nó ghi đè lên tất cả, kể cả Inline style hay ID selector. Khi trình duyệt thấy `!important`, nó sẽ ưu tiên thuộc tính đó ngay lập tức, bất chấp các quy tắc xếp chồng khác.
 
 > Nguồn tham chiếu: 10_inheritance_cascading.md
@@ -212,3 +216,21 @@ Vì:
     Trong CSS, khi các Selector có **Specificity khác nhau** , trình duyệt sẽ luôn chọn Selector có điểm cao nhất bất kể nó nằm ở vị trí nào và thứ tự viết code chỉ có tác dụng khi hai Selector có **cùng mức Specificity**.
 
 > Nguồn tham chiếu: 10.inheritance_cascading.md - ⚙️ Core Technical Truth
+
+## PHẦN C — DEBUG & SUY LUẬN
+
+### Câu C1 — Debug CSS Layout
+
+1. Chiều rộng thực tế = Width + Padding x 2 + Bordor  x 2
+- Sidebar = 300px + 40px + 2px = 342px
+- Content = 660px + 60px + 2px = 722px
+
+2. Container chỉ có chiều rộng là 960px, nhưng tổng chiểu dài thực tế của Sidebar và Content là 1064px nên trình duyệt không đủ không gian để hai phần tử nằm cạnh nhau.
+
+3. Hai cách sửa lỗi
+
+Cách 1: Sử dụng `box-sizingz: border-box`.
+    Khi sử dụng `border-box` trình duyệt sẽ bao gồm cả `padding` và `border` vào trong width đã khai báo.
+
+Cách 2: Tính toán thủ công
+    Tự trừ đi giá trị của `padding` và `border` ra khỏi width mong muốn
