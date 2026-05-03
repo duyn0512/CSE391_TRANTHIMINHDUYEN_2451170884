@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning Demo - E-commerce</title>
+    <link rel="stylesheet" href="positioning.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fa-solid fa-store"></i> E-Shop
+            </div>
+            <nav class="nav-links">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        
+        <main class="content">
+            <h1>Danh mục sản phẩm nổi bật</h1>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge-hot">HOT</div>
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <h3>Smartphone X100</h3>
+                        <p class="price">12.990.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <div class="product-info">
+                        <h3>Laptop Pro 2026</h3>
+                        <p class="price">28.500.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-hot">HOT</div>
+                    <div class="product-image">🎧</div>
+                    <div class="product-info">
+                        <h3>Wireless Headphones</h3>
+                        <p class="price">2.490.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <div class="product-info">
+                        <h3>Smartwatch Series 8</h3>
+                        <p class="price">5.990.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📷</div>
+                    <div class="product-info">
+                        <h3>Camera DSLR X5</h3>
+                        <p class="price">15.200.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-hot">HOT</div>
+                    <div class="product-image">🎮</div>
+                    <div class="product-info">
+                        <h3>Gaming Console V2</h3>
+                        <p class="price">11.990.000 ₫</p>
+                        <button class="add-to-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 40px; color: #64748b;">Cuộn trang xuống dưới để kiểm tra tính năng của Sidebar và Header.</p>
+        </main>
+
+        <aside class="sticky-sidebar">
+            <div class="sidebar-widget">
+                <h3>Danh mục sản phẩm</h3>
+                <ul>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li><a href="#">Laptop & PC</a></li>
+                    <li><a href="#">Phụ kiện</a></li>
+                    <li><a href="#">Đồng hồ thông minh</a></li>
+                    <li><a href="#">Thiết bị âm thanh</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Khuyến mãi</h3>
+                <p>Giảm đến 50% cho các sản phẩm công nghệ trong tuần này.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <button class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Lên đầu trang">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+</body>
+</html>
