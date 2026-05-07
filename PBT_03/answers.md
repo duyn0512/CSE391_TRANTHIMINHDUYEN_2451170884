@@ -42,7 +42,7 @@
 
 3.  External CSS - file riêng:
 
-        - Ví dụ:
+      - Ví dụ:
 
             - File `style.css`:
 
@@ -57,16 +57,16 @@
                     <link rel="stylesheet" type="text/css" href="style.css">
                 </head>
                 ```
-        - Ưu điểm:
+      - Ưu điểm:
             - Tách biệt hoàn toàn nội dung (HTML) và giao diện (CSS)
             - Dễ dàng thay đổi giao diện toàn bộ website hàng nghìn trang bằng cách chỉnh sửa 1 file duy nhất
             - Trình duyệt có thể lưu bộ nhớ đệm(cache) giúp tải trang nhanh hơn.
 
-        - Nhược điểm: Cần thêm một yêu cầu tải file từ server, nếu file CSS bị lỗi đường dẫn, trang web sẽ mất toàn bộ định dạng.
+      - Nhược điểm: Cần thêm một yêu cầu tải file từ server, nếu file CSS bị lỗi đường dẫn, trang web sẽ mất toàn bộ định dạng.
 
-        - Đây là phương pháp tiêu chuẩn cho mọi dự án website thực tế, đặc biệt là các website có nhiều trang.
+      - Đây là phương pháp tiêu chuẩn cho mọi dự án website thực tế, đặc biệt là các website có nhiều trang.
 
-    **Câu hỏi thêm:** - Inline CSS `>` Internal CSS `>` External CSS - Giải thích: - Inline CSS: Nằm trực tiếp trong thuộc tính `style` của thẻ - Internal CSS & External CSS: Cái nào viết sau sẽ thắng vì code sẽ chạy từ trên xuống dưới.
+   **Câu hỏi thêm:** - Inline CSS `>` Internal CSS `>` External CSS - Giải thích: - Inline CSS: Nằm trực tiếp trong thuộc tính `style` của thẻ - Internal CSS & External CSS: Cái nào viết sau sẽ thắng vì code sẽ chạy từ trên xuống dưới.
 
 > Nguồn tham chiếu: 08_introduction_css.md - ⚙️ Core Technical Truth
 
