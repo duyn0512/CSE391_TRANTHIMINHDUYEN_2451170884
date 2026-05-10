@@ -202,3 +202,5 @@ Trình duyệt không đọc được file `.scss` vì SCSS không phải CSS ch
 Để chuyển SCSS -> CSS thì cần compile SCSS thành CSS bằng SCSS compiler.
 
 
+
+
