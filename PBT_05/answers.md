@@ -201,6 +201,26 @@ Trình duyệt không đọc được file `.scss` vì SCSS không phải CSS ch
 
 Để chuyển SCSS -> CSS thì cần compile SCSS thành CSS bằng SCSS compiler.
 
+## PHẦN B — THỰC HÀNH CODE 
 
+### Bài B3 — SCSS Refactor
 
+SCSS Compile Command
 
+1.  Install Sass
+
+```bash
+npm install -g sass
+```
+
+2. Compile SCSS to CSS
+
+```bash
+sass scss/style.scss scss/style.css
+```
+
+3. Watch Mode
+
+```bash
+sass --watch scss/style.scss:scss/style.css
+```
