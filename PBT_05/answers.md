@@ -224,3 +224,161 @@ sass scss/style.scss scss/style.css
 ```bash
 sass --watch scss/style.scss:scss/style.css
 ```
+
+## PHẦN C — PHÂN TÍCH 
+
+### Câu C1 — Phân tích trang web thực
+
+Phân tích giao diện Responsive
+
+1. Navigation thay đổi như thế nào?
+- Mobile (375px)
+    - Thanh navigation được thu gọn.
+    - Xuất hiện biểu tượng hamburger menu (☰).
+    - Các chuyên mục chính bị ẩn bớt.
+    - Thanh tìm kiếm thu nhỏ hoặc ẩn.
+    - Header đơn giản để tiết kiệm không gian.
+- Tablet (768px)
+    - Menu hiển thị nhiều mục hơn mobile.
+    - Một số danh mục vẫn nằm trong dropdown.
+    - Layout cân bằng giữa mobile và desktop.
+    - Navigation ngang bắt đầu xuất hiện đầy đủ hơn.
+- Desktop (1440px)
+    - Menu điều hướng đầy đủ.
+    - Hiển thị toàn bộ chuyên mục:
+        - Thời sự
+        - Kinh doanh
+        - Thể thao
+        - Giải trí
+        - Công nghệ...
+    - Có thêm:
+        - Thanh tìm kiếm
+        - Login/account
+        - Nhiều menu phụ
+
+📌 Kết luận: VNExpress dùng responsive navigation:
+- Mobile → Hamburger menu
+- Tablet → Menu rút gọn
+- Desktop → Full navigation bar
+
+2. Lưới Content thay đổi bao nhiêu cột?
+
+| Thiết bị | Layout |
+|---|---|
+| Mobile | 1 cột |
+| Tablet | 2 cột |
+| Desktop | 3–4 cột |
+
+- Mobile
+    - Tin tức xếp dọc.
+    - Ảnh full width.
+    - Bài viết hiển thị dạng card.
+
+- Tablet
+    - Bắt đầu chia 2 cột.
+    - Sidebar có thể xuất hiện.
+
+- Desktop
+    - Nhiều cột:
+    - Main content
+    - Sidebar
+    - Trending/newsfeed
+    - Tận dụng không gian màn hình lớn.
+
+3. Elements nào bị ẩn trên Mobile?
+
+- Các thành phần thường bị ẩn:
+    - Sidebar quảng cáo
+    - Tin nổi bật phụ
+    - Banner lớn
+    - Một số menu phụ
+    - Widget thời tiết/chứng khoán
+    - Footer mở rộng
+
+- Mục tiêu
+    - Giảm tải nội dung
+    - Tăng tốc độ tải
+    - Trải nghiệm dễ đọc trên điện thoại
+
+3. Font size có thay đổi không?
+
+- Có.
+
+    | Thiết bị | Font |
+    |---|---|
+    | Mobile | Nhỏ hơn |
+    | Tablet | Trung bình |
+    | Desktop | Lớn hơn |
+
+- Ví dụ
+
+    - Mobile:
+    - Title khoảng 14–16px
+
+    - Tablet:
+    - 16–18px
+
+    - Desktop:
+    - 20px+
+
+- Ngoài ra:
+    - Khoảng cách padding/margin cũng thay đổi.
+    - Line-height lớn hơn trên desktop giúp dễ đọc.
+
+
+4. Media Queries tìm được trong DevTools
+
+- Media Query 1
+
+    ```css
+    @media screen and (max-width: 767px) {
+        .sidebar {
+            display: none;
+        }
+    }
+    ```
+    - Ý nghĩa
+        - Khi màn hình nhỏ hơn 768px:
+        - Ẩn sidebar
+        - Chuyển sang layout mobile
+
+
+
+- Media Query 2
+
+    ```css
+    @media screen and (min-width: 1024px) {
+        .container {
+            max-width: 1200px;
+        }
+    }
+    ```
+    - Ý nghĩa
+        - Với desktop:
+        - Tăng chiều rộng container
+        - Hiển thị nhiều cột hơn
+
+
+**Tổng kết**
+
+VNExpress sử dụng thiết kế responsive rất rõ ràng:
+
+- Mobile
+    - Giao diện tối giản
+    - Hamburger menu
+    - 1 cột content
+
+-  Tablet
+    - 2 cột
+    - Menu mở rộng hơn
+
+- Desktop
+    - Full navigation
+    - Nhiều sidebar
+    - Layout nhiều cột
+
+- Trang sử dụng nhiều `@media queries` để:
+    - Ẩn/hiện thành phần
+    - Điều chỉnh grid layout
+    - Thay đổi font size
+    - Tối ưu trải nghiệm đa thiết bị
