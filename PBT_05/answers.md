@@ -382,3 +382,250 @@ VNExpress sử dụng thiết kế responsive rất rõ ràng:
     - Điều chỉnh grid layout
     - Thay đổi font size
     - Tối ưu trải nghiệm đa thiết bị
+
+### Câu C2 — Thiết kế Responsive Strategy
+
+1. Responsive Strategy
+
+A. Mobile Layout (<768px)
+
+- Wireframe Mobile
+
+        ```text
+        +----------------------+
+        | LOGO      ☎ Hotline |
+        +----------------------+
+
+        +----------------------+
+        |                      |
+        |     HERO IMAGE       |
+        |                      |
+        +----------------------+
+
+        +----------------------+
+        | Ảnh 1                |
+        +----------------------+
+        | Ảnh 2                |
+        +----------------------+
+        | Ảnh 3                |
+        +----------------------+
+        | Ảnh 4                |
+        +----------------------+
+        | Ảnh 5                |
+        +----------------------+
+        | Ảnh 6                |
+        +----------------------+
+
+        +----------------------+
+        |   FORM ĐẶT BÀN       |
+        | [Ngày]               |
+        | [Giờ]                |
+        | [Số người]           |
+        | [Ghi chú]            |
+        | [Button Đặt bàn]     |
+        +----------------------+
+
+        +----------------------+
+        |     GOOGLE MAP       |
+        +----------------------+
+
+        +----------------------+
+        |       FOOTER         |
+        +----------------------+
+        ```
+
+- Giải thích:
+    - Hero image hiển thị full width.
+    - Grid ảnh món ăn hiển thị **1 cột**.
+    - Form đặt bàn nằm bên dưới gallery để dễ thao tác trên điện thoại.
+    - Google Maps hiển thị full width.
+    - Có thể ẩn bớt nội dung phụ hoặc giảm chiều cao map.
+    - Không sử dụng sidebar.
+
+B. Tablet Layout (768px → 1023px)
+
+- Wireframe Tablet
+
+        ```text
+        +-----------------------------------+
+        | LOGO                 ☎ Hotline    |
+        +-----------------------------------+
+
+        +-----------------------------------+
+        |                                   |
+        |            HERO IMAGE             |
+        |                                   |
+        +-----------------------------------+
+
+        +---------------+-------------------+
+        |    Ảnh 1      |      Ảnh 2        |
+        +---------------+-------------------+
+        |    Ảnh 3      |      Ảnh 4        |
+        +---------------+-------------------+
+        |    Ảnh 5      |      Ảnh 6        |
+        +---------------+-------------------+
+
+        +-----------------------------------+
+        |         FORM ĐẶT BÀN              |
+        | [Ngày] [Giờ]                      |
+        | [Số người]                        |
+        | [Ghi chú.............]            |
+        +-----------------------------------+
+
+        +-----------------------------------+
+        |          GOOGLE MAP               |
+        +-----------------------------------+
+
+        +-----------------------------------+
+        |             FOOTER                |
+        +-----------------------------------+
+        ```
+
+- Giải thích:
+    - Grid ảnh hiển thị **2 cột**.
+    - Form đặt bàn vẫn nằm dưới gallery.
+    - Google Maps đặt bên dưới form.
+    - Header có khoảng cách rộng hơn.
+    - Chưa cần sidebar.
+
+C. Desktop Layout (≥1024px)
+
+- Wireframe Desktop
+
+        ```text
+        +------------------------------------------------------+
+        | LOGO                               ☎ Hotline         |
+        +------------------------------------------------------+
+
+        +------------------------------------------------------+
+        |                                                      |
+        |                    HERO IMAGE                        |
+        |                                                      |
+        +------------------------------------------------------+
+
+        +--------------------------+---------------------------+
+        |                          |                           |
+        |     GRID 6 ẢNH           |      FORM ĐẶT BÀN        |
+        |     (3 cột)              | [Ngày]                   |
+        |                          | [Giờ]                    |
+        |                          | [Số người]               |
+        |                          | [Ghi chú]                |
+        |                          | [Button]                 |
+        +--------------------------+---------------------------+
+
+        +------------------------------------------------------+
+        |                   GOOGLE MAP                         |
+        +------------------------------------------------------+
+
+        +------------------------------------------------------+
+        |                     FOOTER                           |
+        +------------------------------------------------------+
+        ```
+
+- Giải thích:
+    - Layout chính sử dụng **2 cột**:
+        - Bên trái: gallery món ăn.
+        - Bên phải: form đặt bàn.
+    - Grid ảnh hiển thị **3 cột**.
+    - Form có thể hoạt động như sidebar bên phải.
+    - Google Maps hiển thị full width phía dưới.
+
+2. CSS Skeleton (Mobile First)
+
+        ```css
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero{
+            height: 300px;
+            background: #ddd;
+        }
+
+        .food-grid{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .food-item{
+            height: 150px;
+            background: #ccc;
+        }
+
+        .booking-form{
+            display: grid;
+            gap: 15px;
+        }
+
+        .map{
+            height: 300px;
+            background: #bbb;
+        }
+
+        .footer{
+            text-align: center;
+            padding: 20px;
+            background: #eee;
+        }
+
+        @media (min-width: 768px){
+
+            .food-grid{
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .booking-form{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .booking-form textarea{
+                grid-column: span 2;
+            }
+        }
+
+        @media (min-width: 1024px){
+
+            .main-content{
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 30px;
+                align-items: start;
+            }
+
+            .food-grid{
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .booking-form{
+                grid-template-columns: 1fr;
+            }
+        }
+        ```
+
+3. Tóm tắt Responsive Strategy
+
+| Thiết bị | Grid ảnh | Form đặt bàn | Sidebar | Google Maps |
+|----------|----------|--------------|----------|--------------|
+| Mobile | 1 cột | Dưới gallery | Không | Full width |
+| Tablet | 2 cột | Dưới gallery | Không | Dưới form |
+| Desktop | 3 cột | Bên phải gallery | Có dạng sidebar | Full width |
