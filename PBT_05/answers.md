@@ -263,11 +263,11 @@ Phân tích giao diện Responsive
 
 2. Lưới Content thay đổi bao nhiêu cột?
 
-| Thiết bị | Layout |
-|---|---|
-| Mobile | 1 cột |
-| Tablet | 2 cột |
-| Desktop | 3–4 cột |
+    | Thiết bị | Layout |
+    |---|---|
+    | Mobile | 1 cột |
+    | Tablet | 2 cột |
+    | Desktop | 3–4 cột |
 
 - Mobile
     - Tin tức xếp dọc.
@@ -358,181 +358,176 @@ Phân tích giao diện Responsive
         - Tăng chiều rộng container
         - Hiển thị nhiều cột hơn
 
-
 **Tổng kết**
 
 VNExpress sử dụng thiết kế responsive rất rõ ràng:
-
-- Mobile
-    - Giao diện tối giản
-    - Hamburger menu
-    - 1 cột content
-
--  Tablet
-    - 2 cột
-    - Menu mở rộng hơn
-
-- Desktop
-    - Full navigation
-    - Nhiều sidebar
-    - Layout nhiều cột
-
-- Trang sử dụng nhiều `@media queries` để:
-    - Ẩn/hiện thành phần
-    - Điều chỉnh grid layout
-    - Thay đổi font size
-    - Tối ưu trải nghiệm đa thiết bị
+    - Mobile
+        - Giao diện tối giản
+        - Hamburger menu
+        - 1 cột content
+    -  Tablet
+        - 2 cột
+        - Menu mở rộng hơn
+    - Desktop
+        - Full navigation
+        - Nhiều sidebar
+        - Layout nhiều cột
+    - Trang sử dụng nhiều `@media queries` để:
+        - Ẩn/hiện thành phần
+        - Điều chỉnh grid layout
+        - Thay đổi font size
+        - Tối ưu trải nghiệm đa thiết bị
 
 ### Câu C2 — Thiết kế Responsive Strategy
 
 1. Responsive Strategy
 
-A. Mobile Layout (<768px)
+    A. Mobile Layout (<768px)
 
-- Wireframe Mobile
-
-        ```text
-        +----------------------+
-        | LOGO      ☎ Hotline |
-        +----------------------+
-
-        +----------------------+
-        |                      |
-        |     HERO IMAGE       |
-        |                      |
-        +----------------------+
-
-        +----------------------+
-        | Ảnh 1                |
-        +----------------------+
-        | Ảnh 2                |
-        +----------------------+
-        | Ảnh 3                |
-        +----------------------+
-        | Ảnh 4                |
-        +----------------------+
-        | Ảnh 5                |
-        +----------------------+
-        | Ảnh 6                |
-        +----------------------+
-
-        +----------------------+
-        |   FORM ĐẶT BÀN       |
-        | [Ngày]               |
-        | [Giờ]                |
-        | [Số người]           |
-        | [Ghi chú]            |
-        | [Button Đặt bàn]     |
-        +----------------------+
-
-        +----------------------+
-        |     GOOGLE MAP       |
-        +----------------------+
-
-        +----------------------+
-        |       FOOTER         |
-        +----------------------+
-        ```
-
-- Giải thích:
-    - Hero image hiển thị full width.
-    - Grid ảnh món ăn hiển thị **1 cột**.
-    - Form đặt bàn nằm bên dưới gallery để dễ thao tác trên điện thoại.
-    - Google Maps hiển thị full width.
-    - Có thể ẩn bớt nội dung phụ hoặc giảm chiều cao map.
-    - Không sử dụng sidebar.
-
-B. Tablet Layout (768px → 1023px)
-
-- Wireframe Tablet
+    - Wireframe Mobile
 
         ```text
-        +-----------------------------------+
-        | LOGO                 ☎ Hotline    |
-        +-----------------------------------+
+            +----------------------+
+            | LOGO      ☎ Hotline |
+            +----------------------+
 
-        +-----------------------------------+
-        |                                   |
-        |            HERO IMAGE             |
-        |                                   |
-        +-----------------------------------+
+            +----------------------+
+            |                      |
+            |     HERO IMAGE       |
+            |                      |
+            +----------------------+
 
-        +---------------+-------------------+
-        |    Ảnh 1      |      Ảnh 2        |
-        +---------------+-------------------+
-        |    Ảnh 3      |      Ảnh 4        |
-        +---------------+-------------------+
-        |    Ảnh 5      |      Ảnh 6        |
-        +---------------+-------------------+
+            +----------------------+
+            | Ảnh 1                |
+            +----------------------+
+            | Ảnh 2                |
+            +----------------------+
+            | Ảnh 3                |
+            +----------------------+
+            | Ảnh 4                |
+            +----------------------+
+            | Ảnh 5                |
+            +----------------------+
+            | Ảnh 6                |
+            +----------------------+
 
-        +-----------------------------------+
-        |         FORM ĐẶT BÀN              |
-        | [Ngày] [Giờ]                      |
-        | [Số người]                        |
-        | [Ghi chú.............]            |
-        +-----------------------------------+
+            +----------------------+
+            |   FORM ĐẶT BÀN       |
+            | [Ngày]               |
+            | [Giờ]                |
+            | [Số người]           |
+            | [Ghi chú]            |
+            | [Button Đặt bàn]     |
+            +----------------------+
 
-        +-----------------------------------+
-        |          GOOGLE MAP               |
-        +-----------------------------------+
+            +----------------------+
+            |     GOOGLE MAP       |
+            +----------------------+
 
-        +-----------------------------------+
-        |             FOOTER                |
-        +-----------------------------------+
+            +----------------------+
+            |       FOOTER         |
+            +----------------------+
         ```
 
-- Giải thích:
-    - Grid ảnh hiển thị **2 cột**.
-    - Form đặt bàn vẫn nằm dưới gallery.
-    - Google Maps đặt bên dưới form.
-    - Header có khoảng cách rộng hơn.
-    - Chưa cần sidebar.
+    - Giải thích:
+        - Hero image hiển thị full width.
+        - Grid ảnh món ăn hiển thị **1 cột**.
+        - Form đặt bàn nằm bên dưới gallery để dễ thao tác trên điện thoại.
+        - Google Maps hiển thị full width.
+        - Có thể ẩn bớt nội dung phụ hoặc giảm chiều cao map.
+        - Không sử dụng sidebar.
 
-C. Desktop Layout (≥1024px)
+    B. Tablet Layout (768px → 1023px)
 
-- Wireframe Desktop
+    - Wireframe Tablet
 
         ```text
-        +------------------------------------------------------+
-        | LOGO                               ☎ Hotline         |
-        +------------------------------------------------------+
+            +-----------------------------------+
+            | LOGO                 ☎ Hotline    |
+            +-----------------------------------+
 
-        +------------------------------------------------------+
-        |                                                      |
-        |                    HERO IMAGE                        |
-        |                                                      |
-        +------------------------------------------------------+
+            +-----------------------------------+
+            |                                   |
+            |            HERO IMAGE             |
+            |                                   |
+            +-----------------------------------+
 
-        +--------------------------+---------------------------+
-        |                          |                           |
-        |     GRID 6 ẢNH           |      FORM ĐẶT BÀN        |
-        |     (3 cột)              | [Ngày]                   |
-        |                          | [Giờ]                    |
-        |                          | [Số người]               |
-        |                          | [Ghi chú]                |
-        |                          | [Button]                 |
-        +--------------------------+---------------------------+
+            +---------------+-------------------+
+            |    Ảnh 1      |      Ảnh 2        |
+            +---------------+-------------------+
+            |    Ảnh 3      |      Ảnh 4        |
+            +---------------+-------------------+
+            |    Ảnh 5      |      Ảnh 6        |
+            +---------------+-------------------+
 
-        +------------------------------------------------------+
-        |                   GOOGLE MAP                         |
-        +------------------------------------------------------+
+            +-----------------------------------+
+            |         FORM ĐẶT BÀN              |
+            | [Ngày] [Giờ]                      |
+            | [Số người]                        |
+            | [Ghi chú.............]            |
+            +-----------------------------------+
 
-        +------------------------------------------------------+
-        |                     FOOTER                           |
-        +------------------------------------------------------+
+            +-----------------------------------+
+            |          GOOGLE MAP               |
+            +-----------------------------------+
+
+            +-----------------------------------+
+            |             FOOTER                |
+            +-----------------------------------+
         ```
 
-- Giải thích:
-    - Layout chính sử dụng **2 cột**:
-        - Bên trái: gallery món ăn.
-        - Bên phải: form đặt bàn.
-    - Grid ảnh hiển thị **3 cột**.
-    - Form có thể hoạt động như sidebar bên phải.
-    - Google Maps hiển thị full width phía dưới.
+    - Giải thích:
+        - Grid ảnh hiển thị **2 cột**.
+        - Form đặt bàn vẫn nằm dưới gallery.
+        - Google Maps đặt bên dưới form.
+        - Header có khoảng cách rộng hơn.
+        - Chưa cần sidebar.
+
+    C. Desktop Layout (≥1024px)
+
+    - Wireframe Desktop
+
+        ```text
+            +------------------------------------------------------+
+            | LOGO                               ☎ Hotline         |
+            +------------------------------------------------------+
+
+            +------------------------------------------------------+
+            |                                                      |
+            |                    HERO IMAGE                        |
+            |                                                      |
+            +------------------------------------------------------+
+
+            +--------------------------+---------------------------+
+            |                          |                           |
+            |     GRID 6 ẢNH           |      FORM ĐẶT BÀN        |
+            |     (3 cột)              | [Ngày]                   |
+            |                          | [Giờ]                    |
+            |                          | [Số người]               |
+            |                          | [Ghi chú]                |
+            |                          | [Button]                 |
+            +--------------------------+---------------------------+
+
+            +------------------------------------------------------+
+            |                   GOOGLE MAP                         |
+            +------------------------------------------------------+
+
+            +------------------------------------------------------+
+            |                     FOOTER                           |
+            +------------------------------------------------------+
+        ```
+
+    - Giải thích:
+        - Layout chính sử dụng **2 cột**:
+            - Bên trái: gallery món ăn.
+            - Bên phải: form đặt bàn.
+        - Grid ảnh hiển thị **3 cột**.
+        - Form có thể hoạt động như sidebar bên phải.
+        - Google Maps hiển thị full width phía dưới.
 
 2. CSS Skeleton (Mobile First)
 
-        ```css
+    ```css
         *{
             margin: 0;
             padding: 0;
@@ -620,12 +615,12 @@ C. Desktop Layout (≥1024px)
                 grid-template-columns: 1fr;
             }
         }
-        ```
+    ```
 
 3. Tóm tắt Responsive Strategy
 
-| Thiết bị | Grid ảnh | Form đặt bàn | Sidebar | Google Maps |
-|----------|----------|--------------|----------|--------------|
-| Mobile | 1 cột | Dưới gallery | Không | Full width |
-| Tablet | 2 cột | Dưới gallery | Không | Dưới form |
-| Desktop | 3 cột | Bên phải gallery | Có dạng sidebar | Full width |
+    | Thiết bị | Grid ảnh | Form đặt bàn | Sidebar | Google Maps |
+    |----------|----------|--------------|----------|--------------|
+    | Mobile | 1 cột | Dưới gallery | Không | Full width |
+    | Tablet | 2 cột | Dưới gallery | Không | Dưới form |
+    | Desktop | 3 cột | Bên phải gallery | Có dạng sidebar | Full width |
