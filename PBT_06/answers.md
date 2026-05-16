@@ -20,35 +20,35 @@
         Do dùng `col-12` nên mỗi box chiếm toàn bộ chiều ngang.
 
         ```text
-            +-------------------+
-            | Box 1             |
-            +-------------------+
-            | Box 2             |
-            +-------------------+
-            | Box 3             |
-            +-------------------+
-            | Box 4             |
-            +-------------------+
+        +-------------------+
+        | Box 1             |
+        +-------------------+
+        | Box 2             |
+        +-------------------+
+        | Box 3             |
+        +-------------------+
+        | Box 4             |
+        +-------------------+
         ```
 
     B. Tablet (`768px - 991px`)
         Do dùng `col-md-6` nên mỗi box chiếm 6/12 cột → 2 box mỗi hàng.
 
         ```text
-            +-----------+-----------+
-            | Box 1     | Box 2     |
-            +-----------+-----------+
-            | Box 3     | Box 4     |
-            +-----------+-----------+
+        +-----------+-----------+
+        | Box 1     | Box 2     |
+        +-----------+-----------+
+        | Box 3     | Box 4     |
+        +-----------+-----------+
         ```
 
     C. Desktop (`≥ 992px`)
         Do dùng `col-lg-3` nên mỗi box chiếm 3/12 cột → 4 box trên 1 hàng.
 
         ```text
-            +------+------+------+------+
-            | Box1| Box2| Box3| Box4|
-            +------+------+------+------+
+        +------+------+------+------+
+        | Box1| Box2| Box3| Box4|
+        +------+------+------+------+
         ```
 
 3. Câu hỏi thêm
@@ -89,7 +89,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 -  Ý nghĩa
 
-    ```html id="8dj4ow"
+    ```html
     d-none d-md-block
     ```
 
@@ -106,7 +106,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - Ví dụ
 
-    ```html id="48gcrv"
+    ```html
     <div class="d-none d-md-block">
         Nội dung này chỉ hiện trên tablet và desktop
     </div>
@@ -120,7 +120,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - Cú pháp chung:
 
-    ```text id="48s26v"
+    ```text 
     {property}{side}-{size}
     ```
 
@@ -142,7 +142,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     1. `mt-3`
 
-        ```html id="8azplv"
+        ```html
         <div class="mt-3"></div>
         ```
 
@@ -154,7 +154,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     2. `px-4`
 
-        ```html id="2a3o4u"
+        ```html
         <div class="px-4"></div>
         ```
 
@@ -166,7 +166,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     3. `mb-auto`
 
-        ```html id="w0y6qe"
+        ```html
         <div class="mb-auto"></div>
         ```
 
@@ -178,7 +178,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     4. `py-2`
 
-        ```html id="vxr9lh"
+        ```html
         <div class="py-2"></div>
         ```
 
@@ -186,7 +186,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     5. `ms-5`
 
-        ```html id="7z2gm2"
+        ```html
         <div class="ms-5"></div>
         ```
 
@@ -204,7 +204,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - `.container`
 
-    ```html id="4qqx4z"
+    ```html 
     <div class="container"></div>
     ```
 
@@ -215,7 +215,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - `.container-fluid`
 
-    ```html id="4s7qgw"
+    ```html
     <div class="container-fluid"></div>
     ```
 
@@ -225,7 +225,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - `.container-md`
 
-    ```html id="nm0s8j"
+    ```html 
     <div class="container-md"></div>
     ```
 
@@ -236,19 +236,19 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     - `.container`
 
-        ```text id="q2gmnh"
+        ```text 
         |    nội dung cố định giữa màn hình    |
         ```
 
     - `.container-fluid`
 
-        ```text id="f8h1u4"
+        ```text 
         |nội dung kéo full toàn màn hình|
         ```
 
     - `.container-md`
 
-        ```text id="vjlwm4"
+        ```text
         Mobile: full width
         Desktop: fixed width
         ```
@@ -263,13 +263,13 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     - Đổi màu Bootstrap mặc định:
 
-        ```scss id="hvd7v6"
+        ```scss
         $primary: #0d6efd;
         ```
 
         thành:
 
-        ```scss id="n7g8l5"
+        ```scss
         $primary: #E63946;
         ```
 
@@ -280,7 +280,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
             - Sass compiler
         - Cài bằng npm:
 
-            ```bash id="2y7ozu"
+            ```bash
             npm install bootstrap
             npm install sass
             ```
@@ -288,7 +288,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     - Bước 2 — Tạo file SCSS riêng
         - Ví dụ:
 
-        ```text id="o9uyod"
+        ```text
         custom.scss
         ```
 
@@ -296,14 +296,13 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
         - Trong `custom.scss`:
 
-            ```scss id="ih3yzg"
+            ```scss
             $primary: #E63946;
 
             @import "../node_modules/bootstrap/scss/bootstrap";
             ```
 
         - Bootstrap sẽ dùng màu mới để generate:
-
             - button
             - alert
             - navbar
@@ -316,13 +315,13 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
         - Dùng Sass:
 
-            ```bash id="4i0m1y"
+            ```bash
             sass custom.scss custom.css
             ```
 
     - Bước 5 — Link file CSS mới
 
-        ```html id="8r56lx"
+        ```html
         <link rel="stylesheet" href="custom.css">
         ```
 
@@ -334,7 +333,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         - `.border-primary`
     đều tự động đổi sang:
 
-        ```css id="xtb1n2"
+        ```css
         #E63946
         ```
 
@@ -342,7 +341,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 - Cách KHÔNG tốt
 
-    ```css id="n7w3h1"
+    ```css
     .btn-primary {
         background: red;
     }
@@ -369,11 +368,11 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
             - disabled
         Ví dụ:
     
-            ```css id="r0m6yo"
+        ```css
             .btn-primary:hover
             .btn-primary:focus
             .btn-primary:active
-            ```
+        ```
 
     - Nếu override thủ công dễ:
         - mất hiệu ứng
@@ -390,11 +389,11 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     D. Mất lợi ích của Bootstrap theme system
         - Bootstrap được thiết kế theo hệ thống variables:
     
-            ```scss id="8wgb6f"
-            $primary
-            $success
-            $danger
-            $warning
+            ```scss
+                $primary
+                $success
+                $danger
+                $warning
             ```
 
     - Khi đổi variable:
@@ -418,7 +417,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 - Kết luận
     - Nên dùng:
 
-        ```scss id="24a7lm"
+        ```scss
         $primary: #E63946;
         ```
 
@@ -426,7 +425,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     - Không nên:
 
-        ```css id="i8v7qc"
+        ```css
         .btn-primary {
             background: red;
         }
@@ -442,7 +441,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 1. Navbar responsive bằng CSS thuần (PBT trước)
 
-    ```css id="y8e5tn"
+    ```css
     .navbar {
         background: #f8f8f8;
         padding: 16px;
@@ -458,7 +457,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 Navbar responsive được xử lý bằng:
 
-    ```css id="x7r3cv"
+    ```css 
     @media (min-width: 768px) {
 
         .hamburger {
@@ -477,7 +476,7 @@ Navbar responsive được xử lý bằng:
 
 2. Product card bằng CSS thuần
 
-    ```css id="d0w4qc"
+    ```css
     .product-card {
         background: white;
         border-radius: 12px;
@@ -499,7 +498,7 @@ Navbar responsive được xử lý bằng:
 
 Navbar Bootstrap
 
-    ```html id="m5c9t0"
+    ```html
     <nav class="navbar navbar-expand-lg bg-light">
 
         <div class="container">
@@ -522,7 +521,7 @@ Navbar Bootstrap
 
 Product Card Bootstrap
 
-    ```html id="p6t8qs"
+    ```html
     <div class="card shadow">
 
         <img src="product.jpg"
@@ -576,7 +575,7 @@ Product Card Bootstrap
     - Chỉ cần thêm classes
     - Ví dụ:
 
-        ```html id="j3m8yr"
+        ```html
         class="row col-lg-3 col-md-6"
         ```
 
