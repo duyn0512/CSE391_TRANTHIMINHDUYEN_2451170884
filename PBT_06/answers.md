@@ -20,41 +20,41 @@
         Do dùng `col-12` nên mỗi box chiếm toàn bộ chiều ngang.
 
         ```text
-        +-------------------+
-        | Box 1             |
-        +-------------------+
-        | Box 2             |
-        +-------------------+
-        | Box 3             |
-        +-------------------+
-        | Box 4             |
-        +-------------------+
+            +-------------------+
+            | Box 1             |
+            +-------------------+
+            | Box 2             |
+            +-------------------+
+            | Box 3             |
+            +-------------------+
+            | Box 4             |
+            +-------------------+
         ```
 
     B. Tablet (`768px - 991px`)
         Do dùng `col-md-6` nên mỗi box chiếm 6/12 cột → 2 box mỗi hàng.
 
         ```text
-        +-----------+-----------+
-        | Box 1     | Box 2     |
-        +-----------+-----------+
-        | Box 3     | Box 4     |
-        +-----------+-----------+
+            +-----------+-----------+
+            | Box 1     | Box 2     |
+            +-----------+-----------+
+            | Box 3     | Box 4     |
+            +-----------+-----------+
         ```
 
     C. Desktop (`≥ 992px`)
         Do dùng `col-lg-3` nên mỗi box chiếm 3/12 cột → 4 box trên 1 hàng.
 
         ```text
-        +------+------+------+------+
-        | Box1| Box2| Box3| Box4|
-        +------+------+------+------+
+            +------+------+------+------+
+            | Box1| Box2| Box3| Box4|
+            +------+------+------+------+
         ```
 
 3. Câu hỏi thêm
     - `col-md-6` nghĩa là gì?
-    * `md` = medium screen (màn hình trung bình, từ 768px)
-    * `6` = chiếm 6/12 cột của grid system
+        - `md` = medium screen (màn hình trung bình, từ 768px)
+        - `6` = chiếm 6/12 cột của grid system
 
 => `col-md-6` nghĩa là: Khi màn hình từ 768px trở lên, phần tử sẽ chiếm 6 cột trong tổng 12 cột.
 
@@ -72,9 +72,9 @@
 
 - Nghĩa là:
 
-    * `<576px` → 12 cột
-    * `576px - 767px` → vẫn 12 cột
-    * đến khi gặp `md` thì mới đổi sang 6 cột
+    - `<576px` → 12 cột
+    - `576px - 767px` → vẫn 12 cột
+    - đến khi gặp `md` thì mới đổi sang 6 cột
 
 - Vì vậy không cần viết thêm:
 
@@ -93,8 +93,8 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     d-none d-md-block
     ```
 
-    * `d-none` → ẩn element (`display: none`)
-    * `d-md-block` → từ màn hình `md` trở lên thì hiển thị dạng `block`
+    - `d-none` → ẩn element (`display: none`)
+    - `d-md-block` → từ màn hình `md` trở lên thì hiển thị dạng `block`
 
 - Element hiển thị khi:
 
@@ -124,8 +124,8 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     {property}{side}-{size}
     ```
 
-    * `m` = margin
-    * `p` = padding
+    - `m` = margin
+    - `p` = padding
 
 - Các hướng
 
@@ -146,9 +146,9 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         <div class="mt-3"></div>
         ```
 
-        * `m` = margin
-        * `t` = top
-        * `3` = kích thước mức 3
+        - `m` = margin
+        - `t` = top
+        - `3` = kích thước mức 3
 
         => Tạo margin phía trên.
 
@@ -158,9 +158,9 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         <div class="px-4"></div>
         ```
 
-        * `p` = padding
-        * `x` = trái + phải
-        * `4` = mức spacing 4
+        - `p` = padding
+        - `x` = trái + phải
+        - `4` = mức spacing 4
 
         => Tạo padding trái và phải.
 
@@ -170,9 +170,9 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         <div class="mb-auto"></div>
         ```
 
-        * `m` = margin
-        * `b` = bottom
-        * `auto` = tự động
+        - `m` = margin
+        - `b` = bottom
+        - `auto` = tự động
 
         => Margin-bottom tự động.
 
@@ -182,7 +182,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         <div class="py-2"></div>
         ```
 
-        * Padding trên và dưới mức 2.
+        - Padding trên và dưới mức 2.
 
     5. `ms-5`
 
@@ -190,7 +190,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         <div class="ms-5"></div>
         ```
 
-        * Margin bên trái (start) mức 5.
+        - Margin bên trái (start) mức 5.
 
 3. Sự khác nhau giữa `.container`, `.container-fluid`, `.container-md`
 
@@ -208,9 +208,9 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     <div class="container"></div>
     ```
 
-    * Responsive theo breakpoint.
-    * Có max-width thay đổi theo kích thước màn hình.
-    * Thường dùng nhất.
+    - Responsive theo breakpoint.
+    - Có max-width thay đổi theo kích thước màn hình.
+    - Thường dùng nhất.
 
 
 - `.container-fluid`
@@ -219,8 +219,8 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     <div class="container-fluid"></div>
     ```
 
-    * Luôn chiếm 100% chiều ngang.
-    * Dùng cho layout full màn hình.
+    - Luôn chiếm 100% chiều ngang.
+    - Dùng cho layout full màn hình.
 
 
 - `.container-md`
@@ -229,8 +229,8 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     <div class="container-md"></div>
     ```
 
-    * `<768px` → full width
-    * `≥768px` → hoạt động giống `.container`
+    - `<768px` → full width
+    - `≥768px` → hoạt động giống `.container`
 
 - Minh hoạ
 
@@ -253,3 +253,188 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         Desktop: fixed width
         ```
 
+### PHẦN C — PHÂN TÍCH
+
+#### Câu C1 — Tùy biến Bootstrap
+
+1. Đổi màu `$primary` sang `#E63946`
+
+- Mục tiêu
+
+    - Đổi màu Bootstrap mặc định:
+
+        ```scss id="hvd7v6"
+        $primary: #0d6efd;
+        ```
+
+    thành:
+
+        ```scss id="n7g8l5"
+        $primary: #E63946;
+        ```
+
+- Quy trình thực hiện
+    - Bước 1 — Cài công cụ
+        - Cần:
+            - Bootstrap source SCSS
+            - Sass compiler
+        - Cài bằng npm:
+
+            ```bash id="2y7ozu"
+            npm install bootstrap
+            npm install sass
+            ```
+
+    - Bước 2 — Tạo file SCSS riêng
+        - Ví dụ:
+
+        ```text id="o9uyod"
+        custom.scss
+        ```
+
+    - Bước 3 — Override variable trước khi import Bootstrap
+
+        - Trong `custom.scss`:
+
+            ```scss id="ih3yzg"
+            $primary: #E63946;
+
+            @import "../node_modules/bootstrap/scss/bootstrap";
+            ```
+
+        - Bootstrap sẽ dùng màu mới để generate:
+
+            - button
+            - alert
+            - navbar
+            - badge
+            - border
+            - text colors
+            - utilities
+
+    - Bước 4 — Compile SCSS → CSS
+
+        - Dùng Sass:
+
+            ```bash id="4i0m1y"
+            sass custom.scss custom.css
+            ```
+
+    - Bước 5 — Link file CSS mới
+
+        ```html id="8r56lx"
+        <link rel="stylesheet" href="custom.css">
+        ```
+
+**Kết quả**
+    - Các class như:
+        - `.btn-primary`
+        - `.bg-primary`
+        - `.text-primary`
+        - `.border-primary`
+    đều tự động đổi sang:
+
+        ```css id="xtb1n2"
+        #E63946
+        ```
+
+
+2. Tại sao KHÔNG nên override trực tiếp `.btn-primary`?
+
+- Cách KHÔNG tốt
+
+    ```css id="n7w3h1"
+    .btn-primary {
+        background: red;
+    }
+    ```
+
+- Lý do không nên
+
+    A. Chỉ đổi được một component
+        Đoạn trên chỉ đổi:
+            - `.btn-primary`
+        Nhưng:
+            - `.bg-primary`
+            - `.alert-primary`
+            - `.text-primary`
+            - `.border-primary`
+        vẫn giữ màu cũ.
+        => Giao diện không đồng bộ.
+
+    B. Dễ conflict CSS
+        Bootstrap có:
+            - hover
+            - active
+            - focus
+            - disabled
+        Ví dụ:
+    
+            ```css id="r0m6yo"
+            .btn-primary:hover
+            .btn-primary:focus
+            .btn-primary:active
+            ```
+
+    - Nếu override thủ công dễ:
+        - mất hiệu ứng
+        - sai màu
+        - CSS bị ghi đè lẫn nhau
+
+
+    C. Khó maintain
+        Khi project lớn:
+            - phải sửa nhiều nơi
+            - code khó quản lý
+            - dễ lỗi sau khi update Bootstrap
+
+    D. Mất lợi ích của Bootstrap theme system
+        - Bootstrap được thiết kế theo hệ thống variables:
+    
+            ```scss id="8wgb6f"
+            $primary
+            $success
+            $danger
+            $warning
+            ```
+
+    - Khi đổi variable:
+
+        - toàn bộ framework tự cập nhật
+        - nhất quán toàn hệ thống
+
+
+3. Vì sao nên dùng SASS variables?
+
+- Ưu điểm
+
+    | SASS Variables         | Override CSS           |
+    | ---------------------- | ---------------------- |
+    | Đồng bộ toàn framework | Chỉ sửa từng component |
+    | Dễ maintain            | Khó maintain           |
+    | Chuẩn Bootstrap        | Không chuẩn            |
+    | Hỗ trợ theme system    | Không                  |
+    | Ít conflict            | Dễ conflict            |
+
+- Kết luận
+    - Nên dùng:
+
+        ```scss id="24a7lm"
+        $primary: #E63946;
+        ```
+
+    và compile lại Bootstrap.
+
+    - Không nên:
+
+        ```css id="i8v7qc"
+        .btn-primary {
+            background: red;
+        }
+        ```
+
+    vì:
+        - không đồng bộ
+        - khó bảo trì
+        - dễ lỗi
+        - không tận dụng được hệ thống theme của Bootstrap.
