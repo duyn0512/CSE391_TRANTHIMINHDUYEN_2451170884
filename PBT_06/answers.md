@@ -333,7 +333,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     đều tự động đổi sang:
 
         ```css
-            #E63946
+        #E63946
         ```
 
 2. Tại sao KHÔNG nên override trực tiếp `.btn-primary`?
@@ -342,7 +342,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
         ```css
         .btn-primary {
-            background: red;
+        background: red;
         }
         ```
 
