@@ -333,18 +333,18 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     đều tự động đổi sang:
 
         ```css
-        #E63946
+            #E63946
         ```
 
 2. Tại sao KHÔNG nên override trực tiếp `.btn-primary`?
 
 - Cách KHÔNG tốt
 
-    ```css
-    .btn-primary {
-        background: red;
-    }
-    ```
+        ```css
+        .btn-primary {
+            background: red;
+        }
+        ```
 
 - Lý do không nên
 
@@ -367,11 +367,11 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
             - disabled
         Ví dụ:
     
-        ```css
-            .btn-primary:hover
-            .btn-primary:focus
-            .btn-primary:active
-        ```
+    ```css
+        .btn-primary:hover
+        .btn-primary:focus
+        .btn-primary:active
+    ```
 
     - Nếu override thủ công dễ:
         - mất hiệu ứng
@@ -388,12 +388,12 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
     D. Mất lợi ích của Bootstrap theme system
         - Bootstrap được thiết kế theo hệ thống variables:
     
-            ```scss
-                $primary
-                $success
-                $danger
-                $warning
-            ```
+        ```scss
+            $primary
+            $success
+            $danger
+            $warning
+        ```
 
     - Khi đổi variable:
 
@@ -456,7 +456,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
 Navbar responsive được xử lý bằng:
 
-    ```css 
+```css 
     @media (min-width: 768px) {
 
         .hamburger {
@@ -467,7 +467,7 @@ Navbar responsive được xử lý bằng:
             display: flex;
         }
     }
-    ```
+```
 
 => Mobile hiện hamburger
 
@@ -497,7 +497,7 @@ Navbar responsive được xử lý bằng:
 
 Navbar Bootstrap
 
-    ```html
+```html
     <nav class="navbar navbar-expand-lg bg-light">
 
         <div class="container">
@@ -516,11 +516,11 @@ Navbar Bootstrap
         </div>
 
     </nav>
-    ```
+```
 
 Product Card Bootstrap
 
-    ```html
+```html
     <div class="card shadow">
 
         <img src="product.jpg"
@@ -543,7 +543,7 @@ Product Card Bootstrap
         </div>
 
     </div>
-    ```
+```
 
 4. So sánh
 
