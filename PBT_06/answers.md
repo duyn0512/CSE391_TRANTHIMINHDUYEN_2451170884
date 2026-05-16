@@ -387,18 +387,16 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     D. Mất lợi ích của Bootstrap theme system
         - Bootstrap được thiết kế theo hệ thống variables:
-    
+
         ```scss
-            $primary
-            $success
-            $danger
-            $warning
-        ```
+        $primary;
+        $success;
+        $danger;
+        $warning;        
 
-    - Khi đổi variable:
-
-        - toàn bộ framework tự cập nhật
-        - nhất quán toàn hệ thống
+        - Khi đổi variable:
+            - toàn bộ framework tự cập nhật
+            - nhất quán toàn hệ thống
 
 
 3. Vì sao nên dùng SASS variables?
@@ -424,13 +422,13 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
 
     - Không nên:
 
-        ```css
+    ```css
         .btn-primary {
             background: red;
         }
-        ```
+    ```
 
-    vì:
+    - Vì:
         - không đồng bộ
         - khó bảo trì
         - dễ lỗi
