@@ -18,8 +18,7 @@
 
     A. Màn hình nhỏ (`< 768px`)
         Do dùng `col-12` nên mỗi box chiếm toàn bộ chiều ngang.
-
-        ```
+    ```text
         +-------------------+
         | Box 1             |
         +-------------------+
@@ -29,27 +28,27 @@
         +-------------------+
         | Box 4             |
         +-------------------+
-        ```
+    ```
 
     B. Tablet (`768px - 991px`)
         Do dùng `col-md-6` nên mỗi box chiếm 6/12 cột → 2 box mỗi hàng.
 
-        ```
+    ```text
         +-----------+-----------+
         | Box 1     | Box 2     |
         +-----------+-----------+
         | Box 3     | Box 4     |
         +-----------+-----------+
-        ```
+    ```
 
     C. Desktop (`≥ 992px`)
         Do dùng `col-lg-3` nên mỗi box chiếm 3/12 cột → 4 box trên 1 hàng.
 
-        ```
+    ```text
         +------+------+------+------+
         | Box1| Box2| Box3| Box4|
         +------+------+------+------+
-        ```
+    ```
 
 3. Câu hỏi thêm
     - `col-md-6` nghĩa là gì?
