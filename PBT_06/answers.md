@@ -267,7 +267,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         $primary: #0d6efd;
         ```
 
-    thành:
+        thành:
 
         ```scss id="n7g8l5"
         $primary: #E63946;
@@ -327,7 +327,7 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         ```
 
 **Kết quả**
-    - Các class như:
+    Các class như:
         - `.btn-primary`
         - `.bg-primary`
         - `.text-primary`
@@ -337,7 +337,6 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         ```css id="xtb1n2"
         #E63946
         ```
-
 
 2. Tại sao KHÔNG nên override trực tiếp `.btn-primary`?
 
@@ -438,3 +437,219 @@ do `col-12` đã bao phủ luôn kích thước nhỏ (`sm`).
         - khó bảo trì
         - dễ lỗi
         - không tận dụng được hệ thống theme của Bootstrap.
+
+#### Câu C2 — So sánh CSS Thuần (PBT trước) vs Bootstrap
+
+1. Navbar responsive bằng CSS thuần (PBT trước)
+
+    ```css id="y8e5tn"
+    .navbar {
+        background: #f8f8f8;
+        padding: 16px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        top: 0;
+    }
+    ```
+
+Navbar responsive được xử lý bằng:
+
+    ```css id="x7r3cv"
+    @media (min-width: 768px) {
+
+        .hamburger {
+            display: none;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+    }
+    ```
+
+=> Mobile hiện hamburger
+
+=> Tablet/Desktop hiện menu ngang
+
+2. Product card bằng CSS thuần
+
+    ```css id="d0w4qc"
+    .product-card {
+        background: white;
+        border-radius: 12px;
+
+        display: flex;
+        flex-direction: column;
+
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    ```
+
+    - Card còn có:
+        - hover effect
+        - responsive grid
+        - image handling
+        - button styling
+
+3. Bootstrap version tương đương
+
+Navbar Bootstrap
+
+    ```html id="m5c9t0"
+    <nav class="navbar navbar-expand-lg bg-light">
+
+        <div class="container">
+
+            <a class="navbar-brand">
+                ShopZone
+            </a>
+
+            <button class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+
+    </nav>
+    ```
+
+Product Card Bootstrap
+
+    ```html id="p6t8qs"
+    <div class="card shadow">
+
+        <img src="product.jpg"
+            class="card-img-top">
+
+        <div class="card-body">
+
+            <h5 class="card-title">
+                Product Name
+            </h5>
+
+            <p class="card-text">
+                Product Description
+            </p>
+
+            <button class="btn btn-primary">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+    ```
+
+4. So sánh
+
+    | Tiêu chí      | CSS thuần (PBT)       | Bootstrap           |
+    | ------------- | --------------------- | ------------------- |
+    | Số dòng CSS   | ~250 dòng             | Gần như không cần   |
+    | Responsive    | Tự viết media query   | Có sẵn              |
+    | Navbar        | Tự code flex + mobile | Có component sẵn    |
+    | Product card  | Tự style toàn bộ      | Có `card` component |
+    | Grid layout   | Tự viết CSS Grid      | Có Bootstrap Grid   |
+    | Hover effect  | Tự viết               | Có thể thêm utility |
+    | Thời gian làm | Lâu hơn               | Nhanh hơn           |
+
+5. Số dòng CSS cần viết
+
+- CSS thuần
+    - Trong file PBT khoảng hơn 250 dòng CSS 
+    - Phải tự viết:
+        - responsive
+        - grid
+        - hover
+        - navbar
+        - sidebar
+        - spacing
+        - typography
+
+- Bootstrap
+    - Chỉ cần thêm classes
+    - Ví dụ:
+
+        ```html id="j3m8yr"
+        class="row col-lg-3 col-md-6"
+        ```
+
+    => Bootstrap tự xử lý responsive.
+
+6. Thời gian phát triển
+
+- CSS thuần mất nhiều thời gian vì phải:
+    - nghĩ layout
+    - viết media query
+    - test responsive
+    - fix spacing
+
+- Bootstrap nhanh hơn nhiều vì:
+    - có sẵn component
+    - responsive built-in
+    - utility classes mạnh
+
+7. Khả năng tùy biến
+
+- CSS thuần
+    - Ưu điểm:
+        - toàn quyền thiết kế
+        - UI độc đáo
+        - animation/custom dễ
+    - Nhược điểm:
+        - code nhiều
+        - khó maintain
+
+- Bootstrap
+    - Ưu điểm:
+        - đồng bộ
+        - nhanh
+        - responsive mạnh
+    - Nhược điểm:
+        - UI dễ giống Bootstrap
+        - custom sâu hơi khó nếu không dùng SCSS
+
+8. NÊN dùng Bootstrap khi:
+    - Làm admin dashboard
+    - Landing page
+    - CRUD website
+    - Deadline ngắn
+    - Prototype nhanh
+    - Team nhỏ
+    - Không cần UI quá độc đáo
+Ví dụ:
+    - dashboard
+    - ecommerce cơ bản
+    - website công ty
+
+9. KHÔNG NÊN dùng Bootstrap khi:
+    - Website cần design riêng biệt
+    - UI/UX quá custom
+    - Animation phức tạp
+    - Muốn tối ưu performance cực cao
+    - Có design system riêng
+Ví dụ:
+    - portfolio cao cấp
+    - creative website
+    - product website độc quyền
+
+10. Kết luận
+
+- CSS thuần (PBT trước)
+    - linh hoạt
+    - custom mạnh
+    - học CSS tốt hơn
+    - nhưng code nhiều và lâu hơn
+
+- Bootstrap
+    - phát triển nhanh
+    - responsive tốt
+    - component mạnh
+    - phù hợp đa số project thực tế nhỏ và vừa 
+
