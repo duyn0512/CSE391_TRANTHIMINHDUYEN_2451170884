@@ -122,3 +122,44 @@ console.log("" == false);            // true
 
 - Ngoại lệ duy nhất (Nếu có): Trường hợp duy nhất mà một số lập trình viên dùng `==` là khi họ muốn kiểm tra nhanh một giá trị xem nó có phải là `null` hoặc `undefined` hay không bằng câu lệnh: `if (value == null)`. Tuy nhiên, để an toàn tuyệt đối và đúng chuẩn hiện đại, tài liệu vẫn khuyên bạn nên viết tường minh: `if (value === null || value === undefined)`.
 
+### Câu A4  — Truthy & Falsy
+
+1. Danh sách TẤT CẢ các giá trị Falsy trong JavaScript
+
+Trong JavaScript, **Falsy** là những giá trị khi bị ép kiểu về Boolean (ví dụ: đặt trong điều kiện `if`) sẽ luôn trả về `false`. Theo tài liệu chuẩn, chỉ có **8 giá trị Falsy** sau đây:
+
+1. `false` (chính giá trị Boolean false)
+2. `0` (số không)
+3. `-0` (số âm không)
+4. `0n` (BigInt không)
+5. `""` hoặc `''` hoặc ``` ` `` (chuỗi rỗng, không chứa bất kỳ ký tự nào)
+6. `null` (giá trị rỗng/không tồn tại)
+7. `undefined` (biến chưa được khởi tạo giá trị)
+8. `NaN` (Not a Number - kết quả tính toán thất bại)
+
+> 💡 **Quy tắc vàng:** Tất cả các giá trị còn lại không nằm trong danh sách 8 giá trị trên đều được coi là **Truthy** (trả về `true` khi đưa vào câu lệnh điều kiện).
+
+---
+
+2. Dự đoán Kết quả Điều kiện (`if`)
+
+```javascript
+if ("0") console.log("A");           // ĐƯỢC IN vì "0" là một chuỗi có chứa ký tự, thuộc nhóm Truthy.
+if ("") console.log("B");            // KHÔNG IN vì "" là chuỗi rỗng, thuộc nhóm Falsy.
+if ([]) console.log("C");            // ĐƯỢC IN vì mảng rỗng [] là kiểu Object, thuộc nhóm Truthy.
+if ({}) console.log("D");            // ĐƯỢC IN vì đối tượng rỗng {} là kiểu Object, thuộc nhóm Truthy.
+if (null) console.log("E");          // KHÔNG IN vì null thuộc nhóm Falsy.
+if (0) console.log("F");             // KHÔNG IN vì số 0 thuộc nhóm Falsy.
+if (-1) console.log("G");            // ĐƯỢC IN vì mọi số khác 0 (kể cả số âm) đều là Truthy.
+if (" ") console.log("H");           // ĐƯỢC IN vì chuỗi chứa dấu cách " " KHÔNG phải chuỗi rỗng, là Truthy.
+```
+
+- Kết quả hiển thị trên Console cuối cùng sẽ là:
+```text
+    Plaintext
+    A
+    C
+    D
+    G
+    H
+```
