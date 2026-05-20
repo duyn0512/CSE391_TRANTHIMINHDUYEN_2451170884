@@ -100,3 +100,25 @@ console.log({} + []);                // "[object Object](hoặc 0 tùy môi trư
     - Khác hoàn toàn với toán tử cộng, toán tử trừ `-` **CHỈ có một vai trò duy nhất** là toán tử toán học (trừ hai số). Nó hoàn toàn không có khái niệm "trừ chuỗi văn bản".
     - **Quy tắc ưu tiên:** Khi gặp toán tử `-`, JavaScript bắt buộc phải tìm cách ép kiểu cả hai vế về dạng số (`number`) để thực hiện phép toán.
     -  Trong biểu thức `"5" - 3`, chuỗi `"5"` được tự động chuyển đổi một cách tường minh thành số `5`. Kết quả phép tính trở thành phép toán số học thông thường: `5 - 3 = 2`.
+
+### Câu A3 — So sánh == vs ===
+
+1. Dự đoán kết quả Output
+
+```javascript
+console.log(5 == "5");                // true
+console.log(5 === "5");               // false
+console.log(null == undefined);       // true
+console.log(null === undefined);      // false
+console.log(NaN == NaN);             // false
+console.log(0 == false);             // true
+console.log(0 === false);            // false
+console.log("" == false);            // true
+```
+2. Từ giờ trở đi, bạn luôn luôn nên dùng toán tử `===` (và `!==`) làm mặc định cho mọi phép so sánh trong code JavaScript. Vì: 
+- Tránh bẫy ép kiểu ngầm (Type Coercion): Như các ví dụ trên đã chỉ ra (`0 == false` hay `[] == false` trả về `true`), toán tử `==` tự động ép kiểu theo những quy tắc rất phức tạp và không trực quan. Điều này dễ dẫn đến những bug ngầm cực kỳ khó tìm khi logic ứng dụng phình to.
+
+- Code rõ ràng, minh bạch: Khi dùng `===`, bạn chắc chắn rằng đoạn code chỉ chạy tiếp nếu hai bên đồng nhất tuyệt đối cả về bản chất giá trị lẫn kiểu dữ liệu, giúp code dễ đọc và dễ dự đoán kết quả hơn.
+
+- Ngoại lệ duy nhất (Nếu có): Trường hợp duy nhất mà một số lập trình viên dùng `==` là khi họ muốn kiểm tra nhanh một giá trị xem nó có phải là `null` hoặc `undefined` hay không bằng câu lệnh: `if (value == null)`. Tuy nhiên, để an toàn tuyệt đối và đúng chuẩn hiện đại, tài liệu vẫn khuyên bạn nên viết tường minh: `if (value === null || value === undefined)`.
+
