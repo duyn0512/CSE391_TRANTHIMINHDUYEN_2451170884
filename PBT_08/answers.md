@@ -122,3 +122,58 @@ let: 2
         - Tương tự với lượt lặp cuối cùng.
 
     - Kết quả: Khi hết 200ms, các hàm callback chạy và gọi lại đúng biến `j` mà nó đã tự đóng gói và lưu giữ trong scope của riêng mình từ trước, tạo ra output tuần tự, chính xác: `let: 0`, `let: 1`, `let: 2` .
+
+### Câu A3 — Array Methods
+
+1. Lấy các số chẵn
+```javaScript
+const soChan = nums.filter(n => n % 2 === 0);
+```
+2. Nhân mỗi số với 3
+```javaScript
+const nhanBa = nums.map(n => n * 3);
+```
+3. Tính tổng tất cả
+```javaScript
+const tong = nums.reduce((sum, n) => sum + n, 0);
+```
+4. Tìm số đầu tiên > 7
+```javaScript
+const dauTienLonHonBay = nums.find(n => n > 7);
+```
+5. Kiểm tra CÓ số > 10 không
+```javaScript
+const coSoLonHonMuoi = nums.some(n => n > 10);
+```
+6. Kiểm tra TẤT CẢ đều > 0
+```javaScript
+const tatCaLonHonKhong = nums.every(n => n > 0);
+```
+7. Tạo mảng "Số X là [chẵn/lẻ]"
+```javaScript
+const chuoiChanLe = nums.map(n => `Số ${n} là ${n % 2 === 0 ? "chẵn" : "lẻ"}`);
+```
+8. Đảo ngược mảng (không làm thay đổi/mutate mảng gốc)
+Sử dụng toán tử Spread ... để copy mảng trước rồi mới đảo ngược nhằm đảm bảo tính Immutable Update như bài học yêu cầu:
+
+```javaScript
+const daoNguoc = [...nums].reverse();
+```
+
+### Câu A4 — Object Destructuring & Spread
+
+```javascript
+// Destructuring
+console.log(name, price, ram, color);  // iPhone 16 25990000 8 Titan
+console.log(specs);                     // Lỗi: ReferenceError: specs is not defined
+
+// Spread
+console.log(updated.price);            // 23990000
+console.log(updated.sale);             // true
+console.log(product.price);            // 25990000 (Gốc KHÔNG đổi)
+
+// Spread gotcha
+console.log(product.specs.ram);        // 16 (Bị thay đổi theo!)
+```
+
+
