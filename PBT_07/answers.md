@@ -163,3 +163,23 @@ if (" ") console.log("H");           // ĐƯỢC IN vì chuỗi chứa dấu cá
     G
     H
 ```
+
+### Câu A5 — Template Literals
+
+```javascript
+// Cách 1: Nối chuỗi thông báo cơ bản
+const greeting = `Xin chào ${name}! Bạn ${age} tuổi.`;
+
+// Cách 2: Nối chuỗi tạo URL API nâng cao
+const url = `https://api.example.com/users/${userId}/orders?page=${page}`;
+
+// Cách 3: Tạo chuỗi HTML nhiều dòng (Multiline string)
+const html = `
+<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>
+`;
+```
+
