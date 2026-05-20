@@ -183,3 +183,91 @@ const html = `
 `;
 ```
 
+## PHẦN C — SUY LUẬN
+
+### Câu C1 — Debug JavaScript
+
+#### 1. Danh sách 6 lỗi tìm thấy, giải thích và cách sửa
+
+##### Lỗi 1: Sử dụng sai toán tử gán thay vì toán tử so sánh
+
+* **Vị trí:** `if (giaSauGiam = 0)`
+
+* **Giải thích:** Dấu `=` là toán tử gán, nó sẽ gán số `0` vào biến `giaSauGiam`. Trong câu lệnh điều kiện, số `0` là một giá trị **Falsy**, khiến khối lệnh `if` này không bao giờ được thực thi.
+
+* **Cách sửa:** Chuyển thành toán tử so sánh nghiêm ngặt `===`: `if (giaSauGiam === 0)`.
+
+##### Lỗi 2: Thiếu kiểm tra dữ liệu đầu vào (Validate Input)
+* **Vị trí:** Phép tính toán trong hàm và lệnh gọi `tinhGiaGiamGia("100000", 20)`
+
+* **Giải thích:** Đối số truyền vào đang là một chuỗi `"100000"` chứ không phải kiểu số (`number`). Dù JavaScript có cơ chế ép kiểu ngầm khi thực hiện phép nhân/chia, nhưng đây là thói quen xấu dễ sinh bug khi logic phức tạp hơn. Hơn nữa, hàm chưa chặn trường hợp người dùng truyền dữ liệu không phải là số (như chuỗi chữ, `NaN`).
+
+* **Cách sửa:** Thêm điều kiện kiểm tra kiểu dữ liệu bằng `typeof` và bẫy `NaN` thủ công (không dùng hàm hệ thống): `if (typeof giaBan !== 'number' || typeof phanTramGiam !== 'number' || giaBan !== giaBan || phanTramGiam !== phanTramGiam || giaBan < 0)`.
+
+##### Lỗi 3: Lỗi logic "ẩn" kinh điển với `var` và `setTimeout` trong vòng lặp
+* **Vị trí:** `for (var i = 0; i < 5; i++) { setTimeout(...) }`
+
+* **Giải thích:** Từ khóa `var` có cơ chế **Function Scope / Global Scope** và bị ảnh hưởng bởi cơ chế Hoisting (nâng biến). Khi vòng lặp chạy, nó tạo ra 5 hàm hẹn giờ `setTimeout` chạy bất đồng bộ. Nhưng vì cả 5 hàm này đều dùng chung một biến `i` duy nhất của phạm vi ngoài, nên sau 1 giây khi `setTimeout` kích hoạt, vòng lặp đã chạy xong và biến `i` lúc này đã tăng lên thành `5`. Kết quả là màn hình in ra 5 dòng `"Item 5"` thay vì từ 0 đến 4.
+
+* **Cách sửa:** Đổi `var i` thành `let i`. Từ khóa `let` có **Block Scope** (phạm vi khối lệnh), giúp mỗi lần lặp tạo ra một bản sao biến `i` độc lập nằm riêng ở ô nhớ của lượt lặp đó.
+
+##### Lỗi 4: Thiếu dấu chấm phẩy `;` kết thúc câu lệnh (Lỗi chuẩn phong cách code)
+* **Vị trí:** Cuối các dòng `return`, `var giamGia = ...`, `let giaSauGiam = ...`
+
+* **Giải thích:** Mặc dù JavaScript có cơ chế tự động chèn dấu chấm phẩy (ASI), việc bỏ quên dấu `;` dễ gây hiểu lầm cú pháp khi gộp/nén code hoặc viết code trên cùng một dòng.
+
+* **Cách sửa:** Thêm dấu `;` rõ ràng ở cuối mỗi câu lệnh.
+
+##### Lỗi 5: Sử dụng từ khóa `var` lỗi thời cho biến nội bộ
+* **Vị trí:** `var giamGia = giaBan * phanTramGiam / 100;`
+
+* **Giải thích:** Theo tiêu chuẩn modern JS, việc dùng `var` trong hàm không an toàn vì nó làm rò rỉ biến ra ngoài khối lệnh gần nhất. Biến này không có nhu cầu gán lại giá trị ở các dòng dưới.
+
+* **Cách sửa:** Thay thế bằng từ khóa `const` để đảm bảo tính đóng gói và an toàn dữ liệu.
+
+##### Lỗi 6: Thiếu kiểm tra điều kiện của `giaBan`
+* **Vị trí:** Tham số `giaBan` trong hàm.
+
+* **Giải thích:** Hàm chỉ kiểm tra `phanTramGiam` có hợp lệ từ 0-100 không, nhưng bỏ sót việc kiểm tra `giaBan`. Nếu người dùng vô tình truyền vào một số âm (ví dụ: `-50000`), hàm vẫn tính toán bình thường, dẫn đến lỗi logic thực tế (giá sản phẩm không thể âm).
+
+* **Cách sửa:** Thêm điều kiện chặn giá bán nhỏ hơn 0.
+
+#### 2. Mã nguồn sau khi đã Refactor sạch Bug (100% JS thuần)
+
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (typeof giaBan !== 'number' || typeof phanTramGiam !== 'number' || 
+        giaBan !== giaBan || phanTramGiam !== phanTramGiam) {
+        return "Lỗi: Dữ liệu đầu vào phải là số hợp lệ";
+    }
+
+    if (giaBan < 0) {
+        return "Lỗi: Giá bán không thể nhỏ hơn 0";
+    }
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ";
+    }
+    
+    const giamGia = (giaBan * phanTramGiam) / 100;
+    const giaSauGiam = giaBan - giamGia;
+    
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+    
+    return giaSauGiam;
+}
+
+
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm: " + gia + "đ"); 
+
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá: " + gia2); 
+
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i);
+    }, 1000);
+}
+```
