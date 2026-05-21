@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Form Validator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Đăng Ký Tài Khoản</h2>
+        <form id="registerForm" novalidate>
+            <div class="form-group">
+                <label for="fullName">Họ và tên</label>
+                <div class="input-wrapper">
+                    <input type="text" id="fullName" placeholder="Nhập từ 2 đến 50 ký tự">
+                    <span class="status-icon" id="nameIcon"></span>
+                </div>
+                <div class="error-message" id="nameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" placeholder="example@domain.com">
+                    <span class="status-icon" id="emailIcon"></span>
+                </div>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                    <span class="status-icon" id="passwordIcon"></span>
+                </div>
+                <div class="strength-meter-container">
+                    <div class="strength-text" id="strengthText">Độ bảo mật: Chưa nhập</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="strengthBar"></div>
+                    </div>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
+                    <span class="status-icon" id="confirmPasswordIcon"></span>
+                </div>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <div class="input-wrapper">
+                    <input type="text" id="phone" placeholder="Ví dụ: 0901-234-567" maxlength="12">
+                    <span class="status-icon" id="phoneIcon"></span>
+                </div>
+                <div class="error-message" id="phoneError"></div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit" disabled>Đăng ký ngay</button>
+        </form>
+    </div>
+
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <h3>✅ Đăng Ký Thành Công!</h3>
+            <div class="modal-body" id="modalData"></div>
+            <button class="btn-close" id="closeModalBtn">Đóng</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
