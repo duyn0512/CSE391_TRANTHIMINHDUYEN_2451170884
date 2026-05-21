@@ -305,3 +305,9 @@ Dự đoán kết quả khi bấm Submit:
 
     - Tấn công SQL Injection/XSS
     - Sai lệch dữ liệu hệ thống
+
+## 🎬 PHẦN D — VIDEO THỰC HÀNH OBS
+
+**Video OBS:**
+
+[🎬 Bấm vào đây để xem Video thực hành OBS](https://drive.google.com/file/d/1RVql-SFayDfR-dCyQPHykXnvtQiE_3xl/view?usp=sharing)
