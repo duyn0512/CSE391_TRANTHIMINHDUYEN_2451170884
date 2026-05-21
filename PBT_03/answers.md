@@ -256,3 +256,10 @@
 
 ![Kết quả cascade ](./screenshots/cascade-result.jpg)
 
+## 🎬 PHẦN D — VIDEO THỰC HÀNH OBS
+
+**Video OBS:**
+
+[🎬 Bấm vào đây để xem Video thực hành OBS](https://drive.google.com/file/d/1bdprkJsRWBGM7wT3ca37vQULw1reqLF9/view?usp=sharing
+)
+
