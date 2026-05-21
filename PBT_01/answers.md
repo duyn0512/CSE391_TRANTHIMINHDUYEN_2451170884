@@ -362,4 +362,4 @@ Tuy nhiên, `<div>` không hoàn toàn bị loại bỏ. Trong thực tế, `<di
 
 **Video OBS:**
 
-![Kết quả Video ](https://drive.google.com/file/d/1_mjQga24yC9ZD3SwhLyM6Gh4F7vsZblb/view?usp=sharing)
+[🎬 Bấm vào đây để xem Video thực hành OBS](https://drive.google.com/file/d/1_mjQga24yC9ZD3SwhLyM6Gh4F7vsZblb/view?usp=sharing)
