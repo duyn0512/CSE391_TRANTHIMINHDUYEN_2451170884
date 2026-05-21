@@ -20,7 +20,7 @@ alert("Chào mừng bạn đến với Mini Game Đoán Số!\nMáy đã bí m�
 while (attemptsCount < maxAttempts) {
     let remaining = maxAttempts - attemptsCount;
     let userInput = prompt("Lượt đoán thứ " + (attemptsCount + 1) + " (Còn " + remaining + " lượt):\nNhập một số từ 1 đến 100:");
-}
+
     if (userInput === null) {
         alert("Bạn đã thoát trò chơi.");
         break;
@@ -28,9 +28,10 @@ while (attemptsCount < maxAttempts) {
 
     let guess = userInput * 1;
 
-    if (guess !== guess || guess < 1 || guess > 100 || userInput === "") {
+    if (guess !== guess || guess < 1 || guess > 100 || userInput.trim() === "") {
         alert("Lỗi: Vui lòng chỉ nhập số nguyên hợp lệ trong khoảng từ 1 đến 100!");
         continue; 
+    }
 
     let isDuplicated = false;
     for (let i = 0; i < guessedNumbers.length; i++) {
