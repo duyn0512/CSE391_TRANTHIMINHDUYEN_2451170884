@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.instructions {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.instructions h2 { margin-bottom: 10px; font-size: 20px; }
+kbd {
+    background: #e2e8f0;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    padding: 2px 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input:focus, button:focus {
+    outline: 3px solid #3b82f6 !important;
+    outline-offset: 2px;
+}
+
+.viewer-container {
+    position: relative;
+    background-color: #0f172a;
+    border-radius: 12px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.main-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.slideshow-badge {
+    position: absolute;
+    top: 15px; right: 15px;
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.thumb-btn {
+    border: 3px solid transparent;
+    background: none;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 90px;
+    padding: 0;
+    position: relative;
+}
+
+.thumb-btn img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.thumb-btn.active {
+    border-color: #3b82f6;
+}
+
+.thumb-number {
+    position: absolute;
+    bottom: 4px; right: 4px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 11px;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.palette-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.palette-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.palette-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    overflow: hidden;
+}
+
+#paletteInput {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    color: #1e293b;
+}
+
+.command-list {
+    list-style: none;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.command-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.command-item:hover, .command-item.selected {
+    background-color: #f1f5f9;
+    color: #2563eb;
+}
+
+.command-shortcut {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.palette-footer {
+    padding: 10px 20px;
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12px;
+    color: #64748b;
+    text-align: right;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+body.sepia-theme { background-color: #f4ecd8; color: #433422; }
+body.dark-theme { background-color: #0f172a; color: #f8fafc; }
+body.dark-theme .instructions { background-color: #1e293b; }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Shortcuts & Accessibility App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="instructions">
+            <h2>Keyboard Shortcuts Navigation</h2>
+            <p>⌨️ <strong>Mẹo phím tắt:</strong> Ấn <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở thanh lệnh. Sử dụng <kbd>←</kbd> <kbd>→</kbd>, <kbd>1-9</kbd>, hoặc <kbd>Space</kbd> để điều khiển Gallery bên dưới.</p>
+        </header>
+
+        <main class="gallery-section" aria-label="Bộ sưu tập ảnh">
+            <div class="viewer-container">
+                <img id="mainImage" src="" alt="Hình ảnh hiển thị chính" class="main-image">
+                <div class="slideshow-badge" id="slideshowBadge" aria-live="polite">Slideshow: Tắt</div>
+            </div>
+
+            <div class="thumbnails-grid" id="thumbnailsGrid" role="tablist" aria-label="Danh sách ảnh thu nhỏ">
+            </div>
+        </main>
+    </div>
+
+    <div class="palette-overlay" id="commandPalette" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
+        <div class="palette-content">
+            <h3 id="paletteTitle" class="visually-hidden">Thanh lệnh tìm kiếm nhanh</h3>
+            <input type="text" id="paletteInput" placeholder="Gõ lệnh tìm kiếm (ví dụ: Chuyển màu, Slideshow, Xem ảnh...)" aria-label="Ô nhập lệnh tìm kiếm">
+            <ul class="command-list" id="commandList" role="listbox" aria-label="Danh sách kết quả lệnh tìm kiếm">
+            </ul>
+            <div class="palette-footer">Di chuyển bằng <kbd>↑</kbd> <kbd>↓</kbd>, Chọn bằng <kbd>Enter</kbd>, Đóng bằng <kbd>Esc</kbd></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
