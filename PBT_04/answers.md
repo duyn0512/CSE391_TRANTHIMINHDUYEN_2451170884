@@ -189,3 +189,9 @@
     flex: 1; 
     }
     ```
+
+## 🎬 PHẦN D — VIDEO THỰC HÀNH OBS
+
+**Video OBS:**
+
+[🎬 Bấm vào đây để xem Video thực hành OBS](https://drive.google.com/file/d/1OoaRObdjsW5NYmORcsnxcV34Y3e37zYT/view?usp=sharing)
