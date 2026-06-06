@@ -8,7 +8,8 @@
 
 
 ## Cấu trúc dự án
-CSE391_HoTen_MaSV/
+```
+CSE391_TranThiMinhDuyen_2451170884/
 ├── README.md                    ← Thông tin SV + tiến độ
 ├── PBT_01/
 │   ├── debug.html
@@ -95,6 +96,7 @@ CSE391_HoTen_MaSV/
 │   ├── screenshorts/            ← Chụp kết quả
 │   └── answers.md               ← Trả lời câu hỏi lý thuyết
 
+```
 ### 🔹 PBT_01: Làm quen với cấu trúc HTML cơ bản và các thẻ thông dụng
 * **Nội dung thực hành:**
   * `profile.html`: Xây dựng trang thông tin cá nhân cơ bản, sử dụng các thẻ tiêu đề (`<h1>` đến `<h6>`), thẻ đoạn văn (`<p>`), thẻ danh sách và chèn hình ảnh/liên kết.
