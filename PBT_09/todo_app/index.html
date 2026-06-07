@@ -1,81 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-<div class="todo-app">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-light min-vh-screen d-flex align-items-center justify-content-center py-5"
+  >
+    <div class="container" style="max-width: 550px">
+      <div class="text-center mb-4">
+        <h1 id="app-title" class="fw-extrabold text-dark tracking-tight mb-1">
+          ---
+        </h1>
+        <p id="app-subtitle" class="text-muted small">---</p>
+      </div>
 
-    <h1>📝 Todo App</h1>
-
-    <form id="todoForm">
-
-        <input
-            type="text"
-            id="todoInput"
-            placeholder="What needs to be done?"
-            autocomplete="off"
-        >
-
-        <button type="submit">
-            Add
-        </button>
-
-    </form>
-
-    <ul id="todoList"></ul>
-
-    <div class="controls">
-
-        <span id="todoCount">
-            0 items left
-        </span>
-
-        <div class="filters">
-
-            <button
-                class="filter-btn active"
-                data-filter="all"
-            >
-                All
+      <div class="card card-custom shadow-lg border-0 overflow-hidden">
+        <div class="card-header bg-white border-bottom-0 p-4 pb-0">
+          <form id="todo-form" class="d-flex gap-2">
+            <input
+              type="text"
+              id="todo-input"
+              class="form-control form-control-custom py-2.5 px-4"
+              required
+              autocomplete="off"
+            />
+            <button type="submit" class="btn btn-primary-custom px-4 fw-bold">
+              Thêm
             </button>
-
-            <button
-                class="filter-btn"
-                data-filter="active"
-            >
-                Active
-            </button>
-
-            <button
-                class="filter-btn"
-                data-filter="completed"
-            >
-                Completed
-            </button>
-
+          </form>
         </div>
 
-        <button id="clearCompleted">
-            Clear Completed
-        </button>
+        <div class="card-body p-4">
+          <ul id="todoList" class="list-group list-group-flush"></ul>
+        </div>
 
+        <div
+          id="footer-control"
+          class="card-footer bg-light border-top d-flex justify-content-between align-items-center px-4 py-3 text-secondary small"
+        >
+          <span id="todo-count" class="fw-semibold">0 items left</span>
+
+          <div class="btn-group btn-group-sm" role="group" id="filter-group">
+            <button
+              type="button"
+              class="btn btn-filter active"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button type="button" class="btn btn-filter" data-filter="active">
+              Active
+            </button>
+            <button
+              type="button"
+              class="btn btn-filter"
+              data-filter="completed"
+            >
+              Completed
+            </button>
+          </div>
+
+          <button
+            type="button"
+            id="clear-completed"
+            class="btn btn-link btn-sm text-decoration-none text-danger fw-semibold p-0"
+          >
+            Clear Completed
+          </button>
+        </div>
+      </div>
     </div>
 
-</div>
-
-<script src="app.js"></script>
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
