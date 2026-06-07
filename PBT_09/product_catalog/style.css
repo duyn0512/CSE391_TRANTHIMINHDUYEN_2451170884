@@ -1,196 +1,135 @@
 :root {
-    --bg-color: #f8f9fa;
-    --card-bg: #ffffff;
-    --text-color: #212529;
-    --text-muted: #6c757d;
-    --border-color: #dee2e6;
-    --primary-color: #0d6efd;
-    --primary-hover: #0b5ed7;
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
 }
 
+/* Định nghĩa màu sắc khi <body> ở class dark-mode */
 body.dark-mode {
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --text-color: #f8f9fa;
-    --text-muted: #a0a0a0;
-    --border-color: #333333;
-    --primary-color: #375a7f;
-    --primary-hover: #2b4764;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, border-color 0.3s;
+    --bg-primary: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-main);
 }
 
-#app {
-    max-width: 1200px;
-    margin: 0 auto;
+.transition-all {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--border-color);
+.fw-extrabold {
+    font-weight: 800;
 }
 
-.cart-icon-wrapper {
-    position: relative;
-    font-size: 24px;
+/* Định hình Card sản phẩm */
+.product-card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* Khu vực hiển thị hình ảnh */
+.img-container {
+    background-color: rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border-bottom: 1px solid var(--border-color);
+}
+body.dark-mode .img-container {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Tùy chỉnh các ô nhập liệu / Dropdown */
+.form-control-custom, .form-select-custom {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 12px !important;
+}
+.form-control-custom:focus, .form-select-custom:focus {
+    border-color: #0d6efd !important;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15) !important;
+}
+
+/* Thiết kế nút bấm chuyển đổi Dark Mode */
+.btn-toggle-mode {
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Huy hiệu số lượng Giỏ hàng */
 .cart-badge {
     position: absolute;
-    top: -8px;
-    right: -12px;
-    background-color: #dc3545;
-    color: white;
-    font-size: 12px;
-    padding: 2px 6px;
+    top: -5px;
+    right: -5px;
+    font-size: 0.75rem;
+    padding: 4px 7px;
     border-radius: 50%;
-    font-weight: bold;
 }
 
-.controls-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 30px;
-    align-items: center;
+/* Kiểu dáng riêng cho Nút danh mục */
+.btn-cat {
+    border: 1px solid var(--border-color) !important;
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    font-weight: 600;
+    border-radius: 12px !important;
+    padding: 8px 16px;
+}
+.btn-cat:hover {
+    background-color: var(--border-color) !important;
+}
+.btn-cat.active {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    color: #ffffff !important;
 }
 
-input, select, .btn {
-    padding: 10px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    outline: none;
-    font-size: 14px;
+/* Modal tùy chỉnh thích ứng Dark Mode */
+.modal-content-custom {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 24px !important;
 }
 
-input:focus, select:focus {
-    border-color: var(--primary-color);
+/* Hiệu ứng trượt nhẹ khi sản phẩm xuất hiện */
+.fade-in-card {
+    animation: scaleIn 0.3s ease-out forwards;
 }
 
-.btn {
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.btn:hover, .btn.active {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.product-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    position: relative;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background-color: #eee;
-}
-
-.product-info {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.product-name {
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.product-meta {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.product-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #e44d26;
-    margin-bottom: 15px;
-    margin-top: auto;
-}
-
-.btn-add-cart {
-    width: 100%;
-    margin-top: auto;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background-color: var(--card-bg);
-    padding: 30px;
-    border-radius: 16px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    animation: fadeIn 0.3s ease;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--text-color);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }

@@ -1,0 +1,19 @@
+{
+  "appTitle": "📱 TechMart Catalog",
+  "appSubtitle": "Hệ thống trải nghiệm và tìm kiếm sản phẩm công nghệ cao cấp",
+  "searchPlaceholder": "Tìm kiếm sản phẩm theo tên hoặc danh mục...",
+  "categories": [
+    { "id": "all", "label": "📁 Tất cả" },
+    { "id": "phone", "label": "📱 Điện thoại" },
+    { "id": "laptop", "label": "💻 Laptop" },
+    { "id": "tablet", "label": "📟 Máy tính bảng" },
+    { "id": "accessory", "label": "🎧 Phụ kiện" }
+  ],
+  "sortOptions": [
+    { "value": "default", "label": "⏳ Sắp xếp mặc định" },
+    { "value": "price-asc", "label": "💵 Giá: Thấp đến Cao" },
+    { "value": "price-desc", "label": "💴 Giá: Cao đến Thấp" },
+    { "value": "name-az", "label": "🔤 Tên: A đến Z" },
+    { "value": "rating-desc", "label": "⭐ Đánh giá: Cao nhất" }
+  ]
+}
