@@ -4,37 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keyboard Shortcuts & Accessibility App</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-light min-vh-screen py-5 transition-all">
 
-    <div class="app-container">
-        <header class="instructions">
-            <h2>Keyboard Shortcuts Navigation</h2>
-            <p>⌨️ <strong>Mẹo phím tắt:</strong> Ấn <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở thanh lệnh. Sử dụng <kbd>←</kbd> <kbd>→</kbd>, <kbd>1-9</kbd>, hoặc <kbd>Space</kbd> để điều khiển Gallery bên dưới.</p>
+    <div class="container" style="max-width: 800px;">
+        <header class="text-center mb-5" role="banner">
+            <h1 id="app-title" class="fw-extrabold text-dark mb-2">---</h1>
+            <p id="app-subtitle" class="text-muted small">---</p>
+            <div class="d-inline-block bg-white border rounded-3 px-3 py-1.5 fs-12 fw-semibold shadow-sm text-secondary">
+                Mẹo nhanh: Nhấn <kbd class="bg-dark text-white">Ctrl + K</kbd> để mở thanh lệnh hệ thống.
+            </div>
         </header>
 
-        <main class="gallery-section" aria-label="Bộ sưu tập ảnh">
-            <div class="viewer-container">
-                <img id="mainImage" src="" alt="Hình ảnh hiển thị chính" class="main-image">
-                <div class="slideshow-badge" id="slideshowBadge" aria-live="polite">Slideshow: Tắt</div>
-            </div>
+        <main role="main">
+            <section class="card card-gallery shadow-lg border-0 overflow-hidden mb-4" aria-label="Bộ sưu tập hình ảnh tương tác">
+                
+                <div class="main-display-area position-relative d-flex align-items-center justify-content-center bg-dark" style="height: 450px;">
+                    <img id="active-image" src="" alt="Hình ảnh hiển thị chính" class="img-fluid h-100 object-fit-contain transition-all">
+                    
+                    <span id="slideshow-status" class="badge bg-danger position-absolute top-0 start-0 m-3 px-2.5 py-1.5 tracking-wide text-uppercase" aria-live="polite" style="display: none; font-size: 10px;">
+                        ⏱️ Slideshow Active
+                    </span>
 
-            <div class="thumbnails-grid" id="thumbnailsGrid" role="tablist" aria-label="Danh sách ảnh thu nhỏ">
-            </div>
+                    <div class="image-caption-bar position-absolute bottom-0 start-0 w-100 p-3 text-white d-flex justify-content-between align-items-center">
+                        <h2 id="image-title" class="fs-5 fw-bold mb-0 text-truncate">Tên hình ảnh</h2>
+                        <span id="image-index" class="badge bg-white text-dark fw-bold rounded-pill" aria-label="Vị trí ảnh hiện tại">0 / 0</span>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-white d-flex justify-content-between align-items-center p-3 border-top-0">
+                    <button type="button" id="btn-prev" class="btn btn-outline-secondary px-3 py-2 fw-semibold text-sm" aria-label="Hình ảnh trước đó (Mũi tên trái)">
+                        ⬅️ Trước
+                    </button>
+                    <button type="button" id="btn-slideshow" class="btn btn-primary-custom px-4 py-2 fw-semibold text-sm" aria-label="Bật/Tắt trình chiếu tự động (Dấu cách)">
+                        ▶️ Chạy Slideshow
+                    </button>
+                    <button type="button" id="btn-next" class="btn btn-outline-secondary px-3 py-2 fw-semibold text-sm" aria-label="Hình ảnh kế tiếp (Mũi tên phải)">
+                        Kế tiếp ➡️
+                    </button>
+                </div>
+            </section>
+
+            <section aria-label="Danh sách ảnh thu nhỏ">
+                <div id="thumbnails-container" class="row g-2 justify-content-center">
+                    </div>
+            </section>
         </main>
     </div>
 
-    <div class="palette-overlay" id="commandPalette" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="paletteTitle">
-        <div class="palette-content">
-            <h3 id="paletteTitle" class="visually-hidden">Thanh lệnh tìm kiếm nhanh</h3>
-            <input type="text" id="paletteInput" placeholder="Gõ lệnh tìm kiếm (ví dụ: Chuyển màu, Slideshow, Xem ảnh...)" aria-label="Ô nhập lệnh tìm kiếm">
-            <ul class="command-list" id="commandList" role="listbox" aria-label="Danh sách kết quả lệnh tìm kiếm">
-            </ul>
-            <div class="palette-footer">Di chuyển bằng <kbd>↑</kbd> <kbd>↓</kbd>, Chọn bằng <kbd>Enter</kbd>, Đóng bằng <kbd>Esc</kbd></div>
+    <div id="command-palette" class="palette-overlay" role="dialog" aria-modal="true" aria-label="Thanh lệnh hệ thống nhanh" style="display: none;">
+        <div class="palette-card shadow-2xl animate-scale-in">
+            <div class="palette-header d-flex align-items-center px-3 py-2.5 border-bottom">
+                <span class="fs-5 me-2 select-none">🔍</span>
+                <input 
+                    type="text" 
+                    id="palette-search" 
+                    class="w-100 border-0 bg-transparent text-dark" 
+                    placeholder="Gõ từ khóa để tìm lệnh nhanh... (Nhấn ESC để đóng)" 
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-controls="command-list"
+                >
+            </div>
+            <div class="palette-body" id="command-list" role="listbox">
+                </div>
+            <div class="palette-footer px-3 py-1.5 bg-light border-top text-muted d-flex justify-content-between align-items-center" style="font-size: 11px;">
+                <span>Di chuyển bằng phím <kbd>↑</kbd> <kbd>↓</kbd> , chọn bằng <kbd>Enter</kbd></span>
+                <span><kbd>ESC</kbd> để thoát</span>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
