@@ -1,0 +1,92 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f1f5f9;
+}
+
+/* Hiệu ứng hình nền chuyển màu gradient mượt mà */
+.bg-animate {
+    background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #2193b0, #6dd5ed);
+    background-size: 400% 400%;
+    animation: gradientMovement 12s ease infinite;
+}
+
+@keyframes gradientMovement {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Tùy chỉnh card hiệu ứng kính mờ (Glassmorphism) */
+.card-custom {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 24px !important;
+}
+
+.form-control-custom {
+    border-radius: 14px !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+.form-control-custom:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+}
+
+.btn-primary-custom {
+    background: linear-gradient(to right, #0d6efd, #0284c7);
+    border: none !important;
+    color: white;
+    border-radius: 14px !important;
+}
+.btn-primary-custom:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+/* Tùy chỉnh nút danh sách tag lịch sử */
+#history-container button {
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    transition: all 0.2s ease;
+}
+#history-container button:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.bg-white-50 {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.bg-gradient-line {
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+
+/* Hiệu ứng chuyển cảnh trượt nhẹ khi đổi các trạng thái */
+.animation-fade-in {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Class điều khiển ẩn phần tử tương thích với mã logic JS */
+.hidden {
+    display: none !important;
+}
