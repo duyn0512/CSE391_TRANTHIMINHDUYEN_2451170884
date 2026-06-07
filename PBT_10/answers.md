@@ -174,39 +174,252 @@ loginUser("duyen@example.com", "123456", (user) => {
 ```
 
 4. Refactor thành Async/Await gọn gàng
-Để sử dụng được async/await, trước hết cần chuyển đổi (promisify) các hàm trên thành các hàm trả về Promise:
+   Để sử dụng được async/await, trước hết cần chuyển đổi (promisify) các hàm trên thành các hàm trả về Promise:
 
 ```javascript
-const loginUserPromise = (email, password) => 
-    new Promise(resolve => setTimeout(() => resolve({ userEmail: email }), 1000));
+const loginUserPromise = (email, password) =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve({ userEmail: email }), 1000),
+  );
 
-const getUserProfilePromise = (email) => 
-    new Promise(resolve => setTimeout(() => resolve({ name: "Minh Duyen", age: 20 }), 1000));
+const getUserProfilePromise = (email) =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve({ name: "Minh Duyen", age: 20 }), 1000),
+  );
 
-const getUserPostsPromise = (profileName) => 
-    new Promise(resolve => setTimeout(() => resolve(["Post 1", "Post 2", "Post 3"]), 1000));
+const getUserPostsPromise = (profileName) =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(["Post 1", "Post 2", "Post 3"]), 1000),
+  );
 
-const getPostCommentsPromise = (post) => 
-    new Promise(resolve => setTimeout(() => resolve(["Comment A", "Comment B"]), 1000));
+const getPostCommentsPromise = (post) =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(["Comment A", "Comment B"]), 1000),
+  );
 
 // Tiến hành xử lý tuần tự bằng Async/Await gọn gàng
 async function runWorkflow() {
-    try {
-        const user = await loginUserPromise("duyen@example.com", "123456");
-        console.log("Logged in:", user.userEmail);
+  try {
+    const user = await loginUserPromise("duyen@example.com", "123456");
+    console.log("Logged in:", user.userEmail);
 
-        const profile = await getUserProfilePromise(user.userEmail);
-        console.log("Profile fetched for:", profile.name);
+    const profile = await getUserProfilePromise(user.userEmail);
+    console.log("Profile fetched for:", profile.name);
 
-        const posts = await getUserPostsPromise(profile.name);
-        console.log("Posts found:", posts);
+    const posts = await getUserPostsPromise(profile.name);
+    console.log("Posts found:", posts);
 
-        const comments = await getPostCommentsPromise(posts[0]);
-        console.log("Comments of first post:", comments);
-    } catch (error) {
-        console.error("Có lỗi xảy ra trong chuỗi xử lý:", error);
-    }
+    const comments = await getPostCommentsPromise(posts[0]);
+    console.log("Comments of first post:", comments);
+  } catch (error) {
+    console.error("Có lỗi xảy ra trong chuỗi xử lý:", error);
+  }
 }
 
 runWorkflow();
+```
+
+## PHẦN C — PHÂN TÍCH
+
+### Câu C1 — Error Handling Strategy
+
+1. Network Errors (Mất kết nối mạng giữa chừng)
+
+- Cách xử lý: \* Kỹ thuật: Khi mất mạng, hàm `fetch()` sẽ tự động ném ra (`throw`) một `TypeError: Failed to fetch`. Ta cần dùng khối `try...catch` để bắt lỗi này.
+
+- Trải nghiệm người dùng (UX): Sử dụng sự kiện hệ thống `window.addEventListener('offline')` để hiển thị một thanh thông báo (Toast/Banner) thông báo "Mất kết nối Internet". Đồng thời, tạm khóa các nút bấm thanh toán hoặc gửi đơn hàng để tránh dữ liệu bị xung đột. Khi có mạng lại (`online`), tự động đồng bộ hoặc kích hoạt lại tác vụ.
+
+2. API Errors (Server trả về mã trạng thái đặc biệt)
+
+- Hàm `fetch()` của JavaScript không tự động nhảy vào khối `catch` khi gặp các mã lỗi HTTP như 404 hay 500 (nó vẫn tính là kết nối thành công). Ta phải tự kiểm tra thuộc tính `response.ok`.
+
+- Lỗi 404 (Not Found): Thường xảy ra khi xem một sản phẩm đã bị xóa hoặc sai ID đường dẫn.
+  - Xử lý: Điều hướng người dùng về trang lỗi 404 Custom chỉn chu hoặc hiển thị thông báo "Sản phẩm này hiện không còn tồn tại".
+
+- Lỗi 500 (Internal Server Error): Lỗi hệ thống từ phía Backend (Database sập, lỗi code server).
+  - Xử lý: Hiển thị thông báo chung chung có tính xoa dịu: "Hệ thống đang quá tải, vui lòng thử lại sau ít phút". Tuyệt đối không hiện thị lỗi thô (stack trace) của server lên giao diện Client để đảm bảo bảo mật.
+
+- Lỗi 429 (Too Many Requests): Người dùng hoặc Bot đang spam gửi request quá nhanh (Rate Limit).
+  - Xử lý: Đọc header `Retry-After` từ Server trả về (nếu có) để biết cần đợi bao nhiêu giây, sau đó vô hiệu hóa nút gửi của người dùng và hiển thị đồng hồ đếm ngược: "Bạn thao tác quá nhanh. Vui lòng đợi X giây".
+
+3. Timeout (API phản hồi quá chậm > 10 giây)
+   Để tránh ứng dụng rơi vào trạng thái chờ vô hạn khi mạng chập chờn, ta sử dụng `AbortController` tích hợp sẵn trong trình duyệt để hủy request sau một khoảng thời gian quy định.
+
+```javascript
+/**
+ * Hàm fetch kèm cơ chế tự động hủy nếu quá thời gian (Timeout)
+ * @param {string} url - Đường dẫn API
+ * @param {number} ms - Thời gian chờ tối đa (miliseconds)
+ */
+async function fetchWithTimeout(url, ms = 10000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), ms);
+
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    clearTimeout(id); // Xóa bộ đếm nếu fetch thành công trước thời hạn
+    return response;
+  } catch (error) {
+    clearTimeout(id);
+    if (error.name === "AbortError") {
+      throw new Error(`Yêu cầu bị hủy do quá thời gian phản hồi (${ms}ms)`);
+    }
+    throw error;
+  }
+}
+```
+
+4. Retry Logic (Tự động thử lại khi lỗi kết nối)
+   Đối với các lỗi mang tính tạm thời (như rớt mạng cục bộ trong 1-2 giây), việc tự động thử lại (Retry) ngầm sẽ giúp người dùng không bị gián đoạn trải nghiệm.
+
+```javaScript
+/**
+ * Hàm fetch tích hợp cơ chế tự động thử lại khi gặp lỗi Network
+ * @param {string} url - Đường dẫn API
+ * @param {number} maxRetries - Số lần thử lại tối đa
+ * @param {number} delay - Thời gian chờ giữa các lần thử lại (ms)
+ */
+async function fetchWithRetry(url, maxRetries = 3, delay = 1000) {
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            const response = await fetch(url);
+
+            // Nếu kết nối thành công nhưng gặp lỗi Server (5xx), có thể cấu hình để retry luôn tại đây
+            if (!response.ok && response.status >= 500) {
+                throw new Error(`Server Error: ${response.status}`);
+            }
+
+            return await response.json(); // Thành công thì trả kết quả luôn
+        } catch (error) {
+            const isLastAttempt = i === maxRetries - 1;
+            if (isLastAttempt) {
+                throw new Error(`Thất bại sau ${maxRetries} lần thử lại. Chi tiết: ${error.message}`);
+            }
+            console.warn(`Lần thử thứ ${i + 1} thất bại. Đang thử lại sau ${delay}ms...`);
+            // Chờ một khoảng thời gian trước khi vào vòng lặp kế tiếp
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
+}
+```
+
+### Câu C2 — Promise Combinators Comparison
+
+| Method              | Khi nào resolve?                                                                                                                            | Khi nào reject?                                                                                          | Use case thực tế trong E-Commerce                                                                                                                                                                                                        |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`.all()`**        | Khi **tất cả** các Promise truyền vào đều resolve thành công.                                                                               | Chỉ cần **1** Promise đầu tiên bị reject (Cơ chế _Short-circuit_).                                       | Tải trang **Chi tiết sản phẩm**: Cần chạy song song API thông tin sản phẩm, API hình ảnh, API bảng size. Nếu 1 cái lỗi, trang không thể hiển thị đúng cấu trúc -> Hủy toàn bộ để báo lỗi trang.                                          |
+| **`.allSettled()`** | Khi **tất cả** các Promise đều **đã chạy xong** (không quan tâm thành công hay thất bại). Không bao giờ rơi vào trạng thái reject tổng thể. | Không bao giờ bị reject. Trả về một mảng chứa trạng thái (`fulfilled` hoặc `rejected`) của từng Promise. | Tải dữ liệu **Dashboard / Trang chủ**: Chạy song song API Banner quảng cáo, API Khuyến mãi, API Tin tức. Cái nào lỗi thì ẩn đi hoặc báo lỗi ở Widget đó, các phần khác vẫn hiển thị bình thường.                                         |
+| **`.race()`**       | Khi có **1 Promise đầu tiên** trong mảng hoàn thành (Dù thành công hay thất bại).                                                           | Khi có **1 Promise đầu tiên** trong mảng bị thất bại trước tất cả các cái còn lại.                       | **Cơ chế Timeout cho Request**: Đua giữa API lấy dữ liệu sản phẩm với một Promise hẹn giờ `setTimeout` ném ra lỗi. Nếu API chạy quá 5 giây không xong, Promise hẹn giờ sẽ "thắng" và ném lỗi timeout.                                    |
+| **`.any()`**        | Khi có **1 Promise đầu tiên** trong mảng resolve **thành công**.                                                                            | Khi **tất cả** các Promise trong mảng đều bị reject. Trả về lỗi `AggregateError`.                        | **Lấy dữ liệu từ nguồn dự phòng (Fallback CDN)**: Gọi API lấy danh sách sản phẩm từ 3 máy chủ CDN khác nhau (Singapore, Việt Nam, HongKong). Chỉ cần 1 server phản hồi nhanh nhất và thành công là lấy luôn, mặc kệ các server khác lỗi. |
+
+**Ví dụ mã nguồn kịch bản thực tế (E-Commerce Scenario)**
+
+1. Kịch bản `Promise.all`: Tải trọn gói thông tin đơn hàng cần thanh toán
+
+```javascript
+async function loadCheckoutPage(orderId) {
+  try {
+    // Bắt buộc cả 3 luồng dữ liệu phải có đủ thì mới cho người dùng nhấn "Thanh toán"
+    const [orderDetail, userWallet, shippingFee] = await Promise.all([
+      fetch(`/api/order/${orderId}`).then((r) => r.json()),
+      fetch(`/api/user/wallet`).then((r) => r.json()),
+      fetch(`/api/shipping/calculate`).then((r) => r.json()),
+    ]);
+
+    console.log("Đủ điều kiện thanh toán:", {
+      orderDetail,
+      userWallet,
+      shippingFee,
+    });
+  } catch (error) {
+    // Chỉ cần 1 trong 3 API trên sập, quá trình checkout bị chặn đứng hoàn toàn để tránh rủi ro
+    console.error(
+      "Không thể tiến hành thanh toán do thiếu dữ liệu hệ thống:",
+      error,
+    );
+  }
+}
+```
+
+2. Kịch bản `Promise.allSettled`: Tải các khối thành phần trang cá nhân (Profile Dashboard)
+
+```javascript
+async function loadUserProfile() {
+  const promises = [
+    fetch("/api/user/rewards").then((r) => r.json()), // Điểm thưởng tích lũy
+    fetch("/api/user/voucher-wallet").then((r) => r.json()), // Kho Voucher cá nhân
+    fetch("/api/user/history-orders").then((r) => r.json()), // Lịch sử mua hàng
+  ];
+
+  const results = await Promise.allSettled(promises);
+
+  // Xử lý hiển thị độc lập, lỗi phần nào chặn phần đó, không ảnh hưởng toàn trang
+  if (results[0].status === "fulfilled") renderRewards(results[0].value);
+  else renderRewardsError("Không thể tải điểm thưởng");
+
+  if (results[1].status === "fulfilled") renderVouchers(results[1].value);
+  else renderVouchersError("Không thể tải ví voucher");
+
+  if (results[2].status === "fulfilled") renderOrderHistory(results[2].value);
+  else renderOrderHistoryError("Không thể tải lịch sử mua hàng");
+}
+```
+
+3. Kịch bản `Promise.race`: Giới hạn thời gian phản hồi của cổng thanh toán (Gateway Timeout)
+
+```javascript
+function timeoutPromise(ms) {
+  return new Promise((_, reject) =>
+    setTimeout(() => reject(new Error("Cổng thanh toán phản hồi quá lâu")), ms),
+  );
+}
+
+async function processPayment(paymentData) {
+  try {
+    // Đua giữa API thanh toán thực tế và một Promise đếm ngược 8 giây
+    const quickPaymentResponse = await Promise.race([
+      fetch("/api/payment/execute", {
+        method: "POST",
+        body: JSON.stringify(paymentData),
+      }).then((r) => r.json()),
+      timeoutPromise(8000),
+    ]);
+
+    alert("Thanh toán thành công!");
+  } catch (error) {
+    // Nếu quá 8 giây mà API chưa xong, timeoutPromise thắng cuộc và nhảy vào đây
+    alert(`Giao dịch thất bại: ${error.message}`);
+  }
+}
+```
+
+4. Kịch bản `Promise.any`: Tải danh sách sản phẩm từ các Server phân phối (Multi-Region CDN)
+
+```javascript
+async function fetchProductsFromFastestCDN() {
+  const cdnNodes = [
+    "https://cdn-vietnam.example.com/products",
+    "https://cdn-singapore.example.com/products",
+    "https://cdn-tokyo.example.com/products",
+  ];
+
+  try {
+    // Chỉ cần node CDN nào chạy nhanh nhất và trả về 200 OK trước là lấy ngay lập tức
+    const fastestData = await Promise.any(
+      cdnNodes.map((url) =>
+        fetch(url).then((res) => {
+          if (!res.ok) throw new Error("Node sập");
+          return res.json();
+        }),
+      ),
+    );
+    console.log("Đã tải dữ liệu từ CDN phản hồi nhanh nhất:", fastestData);
+  } catch (aggregateError) {
+    // Chỉ lọt vào đây khi toàn bộ tất cả các node CDN đồng loạt bị sập hoàn toàn
+    console.error(
+      "Tất cả các nguồn dữ liệu CDN đều không phản hồi:",
+      aggregateError.errors,
+    );
+  }
+}
 ```
