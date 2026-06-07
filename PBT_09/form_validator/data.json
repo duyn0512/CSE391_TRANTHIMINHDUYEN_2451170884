@@ -1,0 +1,16 @@
+{
+  "formTitle": "🔐 Tạo Tài Khoản Mới",
+  "formSubtitle": "Vui lòng hoàn thiện các thông tin bên dưới để đăng ký hệ thống",
+  "errors": {
+    "name": "Tên phải từ 2 đến 50 ký tự, không chứa ký tự đặc biệt.",
+    "email": "Định dạng Email không hợp lệ (Ví dụ: abc@domain.com).",
+    "password": {
+      "tooShort": "Mật khẩu phải chứa ít nhất 8 ký tự.",
+      "weak": "Mật khẩu yếu: Cần thêm chữ và số.",
+      "medium": "Mật khẩu trung bình: Nên thêm chữ hoa và ký tự đặc biệt.",
+      "strong": "Mật khẩu mạnh tuyệt đối!"
+    },
+    "confirmPassword": "Mật khẩu xác nhận không trùng khớp.",
+    "phone": "Số điện thoại phải chứa đúng 10 chữ số."
+  }
+}

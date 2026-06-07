@@ -1,177 +1,95 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+    color: #334155;
 }
 
-.form-container {
+.fw-extrabold {
+    font-weight: 800;
+}
+
+/* Kiểu dáng khối Card */
+.card-custom {
+    border-radius: 24px !important;
     background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 450px;
+    border: none !important;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #4a5568;
-    font-size: 14px;
-}
-
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-input {
-    width: 100%;
-    padding: 12px 40px 12px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 15px;
-    outline: none;
+/* Custom các Input điều khiển */
+.form-control-custom {
+    border-radius: 12px !important;
+    border: 2px solid #e2e8f0 !important;
+    font-weight: 500;
+    padding: 10px 40px 10px 16px !important; /* Dành khoảng trống bên phải cho Icon ✅❌ */
     transition: all 0.2s ease;
 }
 
-input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+/* Trạng thái khi trường đã valid (hợp lệ) */
+.form-control-custom.is-valid-custom {
+    border-color: #10b981 !important;
+    background-color: #f0fdf4 !important;
 }
 
-.status-icon {
+/* Trạng thái khi trường lỗi invalid */
+.form-control-custom.is-invalid-custom {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+.form-control-custom:focus {
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
+    outline: none;
+}
+
+/* Container bọc tương đối định vị icon phản hồi */
+.input-group-custom {
+    position: relative;
+}
+
+/* Định vị tuyệt đối icon ✅/❌ nằm đè trong input */
+.feedback-icon {
     position: absolute;
     right: 14px;
-    font-size: 16px;
-}
-
-.error-message {
-    font-size: 12px;
-    color: #dc2626;
-    margin-top: 5px;
-    min-height: 16px;
-}
-
-.strength-meter-container {
-    margin-top: 8px;
-}
-
-.strength-text {
-    font-size: 12px;
-    margin-bottom: 4px;
-    font-weight: 500;
-}
-
-.progress-bar {
-    background-color: #e2e8f0;
-    height: 6px;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    transition: width 0.3s ease, background-color 0.3s ease;
-}
-
-.bg-weak { background-color: #dc2626; width: 33.33%; }
-.bg-medium { background-color: #ca8a04; width: 66.66%; }
-.bg-strong { background-color: #16a34a; width: 100%; }
-
-.text-weak { color: #dc2626; }
-.text-medium { color: #ca8a04; }
-.text-strong { color: #16a34a; }
-
-.btn-submit {
-    width: 100%;
-    padding: 14px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.btn-submit:hover:not(:disabled) {
-    background-color: #1d4ed8;
-}
-
-.btn-submit:disabled {
-    background-color: #94a3b8;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    text-align: center;
-}
-
-.modal-body {
-    text-align: left;
-    margin: 20px 0;
-    background-color: #f8fafc;
-    padding: 15px;
-    border-radius: 6px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 14px;
-    line-height: 1.6;
+    font-weight: bold;
+    pointer-events: none;
 }
 
-.btn-close {
-    padding: 10px 20px;
-    background-color: #334155;
-    color: white;
+/* Khối văn bản hiển thị thông tin lỗi ngay dưới input */
+.error-text {
+    font-size: 11px;
+    color: #ef4444;
+    font-weight: 600;
+    margin-top: 4px;
+    min-height: 16px; /* Giữ chỗ trước tránh giật giao diện khi lỗi xuất hiện */
+}
+
+/* Custom thanh đo lực mật khẩu */
+.progress-custom {
+    height: 6px !important;
+    border-radius: 3px !important;
+    background-color: #e2e8f0 !important;
+}
+
+/* Nút Submit Custom */
+.btn-submit-custom {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #ffffff;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 12px;
+}
+.btn-submit-custom:hover:not(:disabled) {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+.btn-submit-custom:disabled {
+    background: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.transition-all {
+    transition: all 0.3s ease;
 }
